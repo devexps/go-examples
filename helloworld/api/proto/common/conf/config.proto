@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package common.conf;
+option go_package = "helloworld/api/gen/go/common/conf;conf";
+
+import "google/protobuf/duration.proto";
+
+message RemoteConfig {
+  message Consul {
+    string scheme = 1;
+    string address = 2;
+    string key = 3;
+  }
+
+  message Etcd {
+    repeated string endpoints = 1;
+    google.protobuf.Duration timeout = 2;
+    string key = 3;
+  }
+
+  string type = 1;
+  Consul consul = 2;
+  Etcd etcd = 3;
+}
