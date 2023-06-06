@@ -1,9 +1,0 @@
-version: v1
-build:
-  excludes: [third_party]
-breaking:
-  use:
-    - FILE
-lint:
-  use:
-    - DEFAULT

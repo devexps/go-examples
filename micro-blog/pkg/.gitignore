@@ -3,6 +3,7 @@
 *.exe
 *.exe~
 *.dll
+*.so
 *.dylib
 
 # Test binary, built with `go test -c`
@@ -13,9 +14,6 @@
 
 # Dependency directories (remove the comment below to include it)
 vendor/
-
-# Go workspace file
-go.work
 
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
