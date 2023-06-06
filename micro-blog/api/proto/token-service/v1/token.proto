@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-package token_service.v1;
-option go_package = "github.com/devexps/go-examples/micro-blog/api/gen/go/token_service/v1;v1";
-
-service TokenService {
-
-}
