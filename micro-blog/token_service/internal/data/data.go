@@ -1,8 +1,8 @@
 package data
 
 import (
-	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
+	"github.com/devexps/go-micro/v2/log"
 )
 
 // Data .

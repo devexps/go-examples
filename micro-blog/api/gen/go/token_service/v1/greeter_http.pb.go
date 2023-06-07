@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-http v2.6.2
 // - protoc             v3.19.4
-// source: token-service/v1/greeter.proto
+// source: token_service/v1/greeter.proto
 
 package v1
 
@@ -19,7 +19,7 @@ var _ = binding.EncodeURL
 
 const _ = http.SupportPackageIsVersion1
 
-const OperationGreeterSayHello = "/tokenservice.v1.Greeter/SayHello"
+const OperationGreeterSayHello = "/token_service.v1.Greeter/SayHello"
 
 type GreeterHTTPServer interface {
 	// SayHello Sends a greeting
@@ -28,7 +28,7 @@ type GreeterHTTPServer interface {
 
 func RegisterGreeterHTTPServer(s *http.Server, srv GreeterHTTPServer) {
 	r := s.Route("/")
-	r.GET("/token-service/{name}", _Greeter_SayHello0_HTTP_Handler(srv))
+	r.GET("/token_service/{name}", _Greeter_SayHello0_HTTP_Handler(srv))
 }
 
 func _Greeter_SayHello0_HTTP_Handler(srv GreeterHTTPServer) func(ctx http.Context) error {
@@ -67,7 +67,7 @@ func NewGreeterHTTPClient(client *http.Client) GreeterHTTPClient {
 
 func (c *GreeterHTTPClientImpl) SayHello(ctx context.Context, in *HelloRequest, opts ...http.CallOption) (*HelloReply, error) {
 	var out HelloReply
-	pattern := "/token-service/{name}"
+	pattern := "/token_service/{name}"
 	path := binding.EncodeURL(pattern, in, true)
 	opts = append(opts, http.Operation(OperationGreeterSayHello))
 	opts = append(opts, http.PathTemplate(pattern))

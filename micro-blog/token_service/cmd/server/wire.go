@@ -6,15 +6,15 @@
 package main
 
 import (
+	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
+	"github.com/devexps/go-examples/micro-blog/token_service/internal/biz"
+	"github.com/devexps/go-examples/micro-blog/token_service/internal/data"
+	"github.com/devexps/go-examples/micro-blog/token_service/internal/server"
+	"github.com/devexps/go-examples/micro-blog/token_service/internal/service"
 	"github.com/devexps/go-micro/v2"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/registry"
 	"github.com/google/wire"
-	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
-	"github.com/devexps/go-examples/micro-blog/token-service/internal/biz"
-	"github.com/devexps/go-examples/micro-blog/token-service/internal/data"
-	"github.com/devexps/go-examples/micro-blog/token-service/internal/server"
-	"github.com/devexps/go-examples/micro-blog/token-service/internal/service"
 )
 
 // initApp init micro application.

@@ -1,5 +1,5 @@
 package service
 
 const (
-	TokenService = "micro_blog.token.service"
+	TokenService = "micro-blog.token.service"
 )
