@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 package common.conf;
-option go_package = "helloworld/api/gen/go/common/conf;conf";
 
 import "common/conf/server.proto";
 import "common/conf/data.proto";
@@ -10,6 +9,8 @@ import "common/conf/trace.proto";
 import "common/conf/logger.proto";
 import "common/conf/registry.proto";
 import "common/conf/config.proto";
+
+option go_package = "helloworld/api/gen/go/common/conf;conf";
 
 message Bootstrap {
   Server server = 1;
