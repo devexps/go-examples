@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package common.conf;
+
 option go_package = "helloworld/api/gen/go/common/conf;conf";
 
 message Registry {
