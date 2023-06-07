@@ -2,9 +2,9 @@ package service
 
 import (
 	"context"
-	v1 "github.com/devexps/go-examples/micro-blog/api/gen/go/token-service/v1"
-	"github.com/devexps/go-examples/micro-blog/token-service/internal/biz"
-	"github.com/devexps/go-examples/micro-blog/token-service/internal/data"
+	v1 "github.com/devexps/go-examples/micro-blog/api/gen/go/token_service/v1"
+	"github.com/devexps/go-examples/micro-blog/token_service/internal/biz"
+	"github.com/devexps/go-examples/micro-blog/token_service/internal/data"
 )
 
 type GreeterService interface {
@@ -23,7 +23,7 @@ func NewGreeterService(uc biz.GreeterUseCase) GreeterService {
 	return &greeterService{uc: uc}
 }
 
-// SayHello implements token-service.GreeterServer.
+// SayHello implements token_service.GreeterServer.
 func (s *greeterService) SayHello(ctx context.Context, in *v1.HelloRequest) (*v1.HelloReply, error) {
 	g, err := s.uc.CreateGreeter(ctx, &data.Greeter{Hello: in.Name})
 	if err != nil {

@@ -1,4 +1,4 @@
-module github.com/devexps/go-examples/micro-blog/token-service
+module github.com/devexps/go-examples/micro-blog/token_service
 
 go 1.18
 

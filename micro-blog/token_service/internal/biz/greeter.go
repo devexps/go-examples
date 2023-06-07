@@ -2,8 +2,8 @@ package biz
 
 import (
 	"context"
+	"github.com/devexps/go-examples/micro-blog/token_service/internal/data"
 	"github.com/devexps/go-micro/v2/log"
-	"github.com/devexps/go-examples/micro-blog/token-service/internal/data"
 )
 
 // GreeterUseCase is a Greater use case interface.

@@ -7,7 +7,7 @@ info:
     description: The greeting service definition.
     version: 0.0.1
 paths:
-    /token-service/{name}:
+    /token_service/{name}:
         get:
             tags:
                 - Greeter
@@ -25,10 +25,10 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/tokenservice.v1.HelloReply'
+                                $ref: '#/components/schemas/token_service.v1.HelloReply'
 components:
     schemas:
-        tokenservice.v1.HelloReply:
+        token_service.v1.HelloReply:
             type: object
             properties:
                 message:
