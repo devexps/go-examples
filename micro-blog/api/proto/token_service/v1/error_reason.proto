@@ -2,11 +2,21 @@ syntax = "proto3";
 
 package token_service.v1;
 
+import "errors/errors.proto";
+
 option go_package = "github.com/devexps/go-examples/micro-blog/api/gen/go/token_service/v1;v1";
 option java_multiple_files = true;
 option java_package = "dev.gomicro.api.token_service.v1";
 
 enum ErrorReason {
-  GREETER_UNSPECIFIED = 0;
-  DATA_NOT_FOUND = 1;
+  option (errors.default_code) = 500;
+
+  CREATE_TOKEN_FAILED = 0 [(errors.code) = 101]; // create token failed
+  SAVE_TOKEN_FAILED = 1 [(errors.code) = 102]; // save token failed
+  TOKEN_EXPIRED = 2 [(errors.code) = 103]; // token expired
+  INVALID_TOKEN = 3 [(errors.code) = 104]; // token invalid
+  TOKEN_NOT_EXIST = 4 [(errors.code) = 105]; // token not exist
+  NO_TOKEN_IN_CONTEXT = 5 [(errors.code) = 106]; // no jwt token in context
+  CLAIMS_IS_NIL = 6 [(errors.code) = 107]; // claims is nil
+  CLAIMS_IS_NOT_MAP = 7 [(errors.code) = 108]; // claims is not map claims
 }

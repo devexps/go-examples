@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package common.authn;
+
+option go_package = "github.com/devexps/go-examples/micro-blog/api/gen/go/common/authn;authn";
+
+message Claims {
+  // claim required field
+  string subject = 1;
+
+  // for token
+  string userId = 2;
+  string userName = 3;
+  string platform = 4;
+
+  // for biz
+  string nickName = 5;
+}

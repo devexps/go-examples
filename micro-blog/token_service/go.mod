@@ -10,7 +10,11 @@ replace (
 require (
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230606092837-4542e486e7ff
+	github.com/devexps/go-micro/v2 v2.0.0-20230622091925-6ad29e8f3392
+	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
+	github.com/go-redis/redis/v8 v8.11.5
+	github.com/golang-jwt/jwt/v4 v4.4.1
+	github.com/golang/protobuf v1.5.3
 	github.com/google/wire v0.5.0
 )
 
@@ -19,8 +23,8 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230606092837-4542e486e7ff // indirect
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230606092837-4542e486e7ff // indirect
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230622091925-6ad29e8f3392 // indirect
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230622091925-6ad29e8f3392 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
@@ -29,10 +33,7 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/form/v4 v4.2.0 // indirect
 	github.com/go-redis/redis/extra/rediscmd/v8 v8.11.5 // indirect
-	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5 // indirect
-	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/subcommands v1.0.1 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
@@ -68,7 +69,7 @@ require (
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.7.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
-	golang.org/x/tools v0.6.0 // indirect
+	golang.org/x/tools v0.6.1-0.20230222164832-25d2519c8696 // indirect
 	google.golang.org/genproto v0.0.0-20230525234025-438c736192d0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20230530153820-e85fd2cbaebc // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230525234030-28d5490b6b19 // indirect

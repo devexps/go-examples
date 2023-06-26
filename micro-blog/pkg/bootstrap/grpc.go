@@ -3,7 +3,6 @@ package bootstrap
 import (
 	"context"
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
-	"github.com/devexps/go-examples/micro-blog/pkg/middleware/metadata"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
@@ -11,31 +10,36 @@ import (
 	"github.com/devexps/go-micro/v2/registry"
 	microGrpc "github.com/devexps/go-micro/v2/transport/grpc"
 	"google.golang.org/grpc"
-	"google.golang.org/protobuf/types/known/durationpb"
 	"time"
 )
 
 const defaultTimeout = 5 * time.Second
 
 // CreateGrpcClient creates a GRPC client
-func CreateGrpcClient(ctx context.Context, r registry.Discovery, serviceName string, timeoutDuration *durationpb.Duration) grpc.ClientConnInterface {
+func CreateGrpcClient(cfg *conf.Bootstrap, ctx context.Context, r registry.Discovery, serviceName string, m ...middleware.Middleware) grpc.ClientConnInterface {
 	timeout := defaultTimeout
-	if timeoutDuration != nil {
-		timeout = timeoutDuration.AsDuration()
+	if cfg.Client.Grpc.Timeout != nil {
+		timeout = cfg.Client.Grpc.Timeout.AsDuration()
 	}
-
 	endpoint := "discovery:///" + serviceName
+
+	var ms []middleware.Middleware
+	if cfg.Client.Grpc.Middleware != nil {
+		if cfg.Client.Grpc.Middleware.GetEnableRecovery() {
+			ms = append(ms, recovery.Recovery())
+		}
+		if cfg.Client.Grpc.Middleware.GetEnableTracing() {
+			ms = append(ms, tracing.Client())
+		}
+	}
+	ms = append(ms, m...)
 
 	conn, err := microGrpc.DialInsecure(
 		ctx,
 		microGrpc.WithEndpoint(endpoint),
 		microGrpc.WithDiscovery(r),
 		microGrpc.WithTimeout(timeout),
-		microGrpc.WithMiddleware(
-			recovery.Recovery(),
-			metadata.Client(),
-			tracing.Client(),
-		),
+		microGrpc.WithMiddleware(ms...),
 	)
 	if err != nil {
 		log.Fatalf("dial grpc client [%s] failed: %s", serviceName, err.Error())
@@ -48,9 +52,14 @@ func CreateGrpcServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microGrp
 	var opts []microGrpc.ServerOption
 
 	var ms []middleware.Middleware
-	ms = append(ms, recovery.Recovery())
-	ms = append(ms, metadata.Server())
-	ms = append(ms, tracing.Server())
+	if cfg.Server.Grpc.Middleware != nil {
+		if cfg.Server.Grpc.Middleware.GetEnableRecovery() {
+			ms = append(ms, recovery.Recovery())
+		}
+		if cfg.Server.Grpc.Middleware.GetEnableTracing() {
+			ms = append(ms, tracing.Server())
+		}
+	}
 	ms = append(ms, m...)
 	opts = append(opts, microGrpc.Middleware(ms...))
 

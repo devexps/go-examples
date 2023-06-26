@@ -3,18 +3,24 @@ syntax = "proto3";
 package common.conf;
 
 import "google/protobuf/duration.proto";
+import "common/conf/middleware.proto";
 
-option go_package = "github.com/devexps/go-micro/examples/api/gen/go/common/conf;conf";
+option go_package = "github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf;conf";
 
 message Server {
   // HTTP
   message HTTP {
+    message CORS {
+      repeated string headers = 1;
+      repeated string methods = 2;
+      repeated string origins = 3;
+    }
+
     string network = 1;
     string addr = 2;
     google.protobuf.Duration timeout = 3;
-    repeated string headers = 4;
-    repeated string methods = 5;
-    repeated string origins = 6;
+    CORS cors = 4;
+    Middleware middleware = 5;
   }
 
   // gPRC
@@ -22,6 +28,7 @@ message Server {
     string network = 1;
     string addr = 2;
     google.protobuf.Duration timeout = 3;
+    Middleware middleware = 4;
   }
 
   HTTP http = 1;

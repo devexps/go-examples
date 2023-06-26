@@ -1,0 +1,23 @@
+server:
+  grpc:
+    addr: 0.0.0.0:9091
+    timeout: 1s
+    middleware:
+      enable_recovery: true
+      enable_tracing: true
+
+registry:
+  type: "consul"
+  consul:
+    address: 127.0.0.1:8500
+    scheme: http
+    health_check: false
+
+trace:
+  endpoint: 127.0.0.1:6831
+
+data:
+  database:
+    driver: mysql
+    source: micro:micro@tcp(127.0.0.1:3306)/test?parseTime=true
+    migrate: true

@@ -32,8 +32,20 @@ proto:
 		--go_out=paths=source_relative:../gen/go \
 		--go-http_out=paths=source_relative:../gen/go \
 		--go-grpc_out=paths=source_relative:../gen/go \
+		--go-errors_out=paths=source_relative:../gen/go \
 		--openapi_out=fq_schema_naming=true,default_response=false:../gen/docs \
 		$(API_PROTO_FILES)
+
+# generate ent code
+ent:
+ifneq ("$(wildcard ./internal/data/ent)","")
+	@go run -mod=mod entgo.io/ent/cmd/ent generate \
+				--feature privacy \
+				--feature sql/modifier \
+				--feature entql \
+				--feature sql/upsert \
+				./internal/data/ent/schema
+endif
 
 # generate
 generate:

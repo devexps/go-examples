@@ -21,16 +21,16 @@ import (
 
 // initApp init micro application.
 func initApp(logger log.Logger, registrar registry.Registrar, bootstrap *conf.Bootstrap) (*micro.App, func(), error) {
-	dataData, cleanup, err := data.NewData(bootstrap, logger)
+	client := data.NewRedisClient(bootstrap, logger)
+	dataData, cleanup, err := data.NewData(bootstrap, logger, client)
 	if err != nil {
 		return nil, nil, err
 	}
-	greeterRepo := data.NewGreeterRepo(dataData, logger)
-	greeterUseCase := biz.NewGreeterUseCase(greeterRepo, logger)
-	greeterService := service.NewGreeterService(greeterUseCase)
-	httpServer := server.NewHTTPServer(bootstrap, logger, greeterService)
-	grpcServer := server.NewGRPCServer(bootstrap, logger, greeterService)
-	app := newApp(logger, httpServer, grpcServer, registrar)
+	tokenRepo := data.NewTokenRepo(logger, dataData, bootstrap)
+	tokenUseCase := biz.NewTokenUseCase(tokenRepo, logger)
+	tokenService := service.NewTokenService(logger, tokenUseCase)
+	grpcServer := server.NewGRPCServer(bootstrap, logger, tokenService)
+	app := newApp(logger, grpcServer, registrar)
 	return app, func() {
 		cleanup()
 	}, nil

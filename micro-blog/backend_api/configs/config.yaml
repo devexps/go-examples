@@ -1,0 +1,59 @@
+server:
+  http:
+    addr: 0.0.0.0:8080
+    timeout: 1s
+    cors:
+      headers:
+        - "Content-Type"
+        - "Authorization"
+      methods:
+        - "GET"
+        - "POST"
+        - "PUT"
+        - "DELETE"
+        - "HEAD"
+        - "OPTIONS"
+      origins:
+        - "*"
+    middleware:
+      enable_recovery: true
+      enable_tracing: true
+      auth:
+        method: "HS256"
+        key: "some_api_key"
+  grpc:
+    addr: 0.0.0.0:9090
+    timeout: 1s
+    middleware:
+      enable_recovery: true
+      enable_tracing: true
+      auth:
+        method: "HS256"
+        key: "some_api_key"
+
+client:
+  grpc:
+    timeout: 10s
+    middleware:
+      enable_recovery: true
+      enable_tracing: true
+
+registry:
+  type: "consul"
+  consul:
+    address: 127.0.0.1:8500
+    scheme: http
+    health_check: false
+
+#data:
+#  redis:
+#    addr: 127.0.0.1:6379
+#    read_timeout: 0.2s
+#    write_timeout: 0.2s
+
+#auth:
+#  service_key: some-secret-key
+#  api_key: some-secret-key-for-frontend
+
+trace:
+  endpoint: 127.0.0.1:6831

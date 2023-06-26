@@ -4,7 +4,7 @@ package common.conf;
 
 import "google/protobuf/duration.proto";
 
-option go_package = "github.com/devexps/go-micro/examples/api/gen/go/common/conf;conf";
+option go_package = "github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf;conf";
 
 message Data {
   message Database {
