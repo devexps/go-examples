@@ -3,36 +3,90 @@
 
 openapi: 3.0.3
 info:
-    title: Greeter API
-    description: The greeting service definition.
-    version: 0.0.1
+    title: User backend login authentication interface
+    description: User backend login authentication
+    version: "1.0"
 paths:
-    /token_service/{name}:
-        get:
+    /admin/v1/login:
+        post:
             tags:
-                - Greeter
-            description: Sends a greeting
-            operationId: Greeter_SayHello
-            parameters:
-                - name: name
-                  in: path
-                  required: true
-                  schema:
-                    type: string
+                - AuthenticationService
+            description: Login api
+            operationId: AuthenticationService_Login
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/backend_api.v1.LoginRequest'
+                required: true
             responses:
                 "200":
                     description: OK
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/token_service.v1.HelloReply'
+                                $ref: '#/components/schemas/backend_api.v1.LoginReply'
+    /admin/v1/logout:
+        post:
+            tags:
+                - AuthenticationService
+            description: Logout api
+            operationId: AuthenticationService_Logout
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/backend_api.v1.LogoutRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /admin/v1/me:
+        get:
+            tags:
+                - AuthenticationService
+            description: GetMe api
+            operationId: AuthenticationService_GetMe
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/user_service.v1.User'
 components:
     schemas:
-        token_service.v1.HelloReply:
+        backend_api.v1.LoginReply:
             type: object
             properties:
-                message:
+                id:
                     type: string
-            description: The response message containing the greetings
+                userName:
+                    type: string
+                token:
+                    type: string
+        backend_api.v1.LoginRequest:
+            type: object
+            properties:
+                userName:
+                    type: string
+                password:
+                    type: string
+        backend_api.v1.LogoutRequest:
+            type: object
+            properties: {}
+        user_service.v1.User:
+            type: object
+            properties:
+                id:
+                    type: string
+                userName:
+                    type: string
+                nickName:
+                    type: string
+                password:
+                    type: string
+            description: User
 tags:
-    - name: Greeter
+    - name: AuthenticationService

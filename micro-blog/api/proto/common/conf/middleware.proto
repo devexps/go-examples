@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package common.conf;
+
+option go_package = "github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf;conf";
+
+message Middleware {
+  // JWT or whatever
+  message Auth {
+    string method = 1; // JWT default method: HS256
+    string key = 2; // hash key
+  }
+
+  bool enable_recovery = 1;
+  bool enable_tracing = 2;
+
+  Auth auth = 10;
+}

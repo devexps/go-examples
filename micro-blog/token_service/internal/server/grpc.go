@@ -12,9 +12,9 @@ import (
 
 // NewGRPCServer new a gRPC server.
 func NewGRPCServer(cfg *conf.Bootstrap, logger log.Logger,
-	greeterSvc service.GreeterService,
+	tokenSvc service.TokenService,
 ) *grpc.Server {
 	srv := bootstrap.CreateGrpcServer(cfg, logging.Server(logger))
-	v1.RegisterGreeterServer(srv, greeterSvc)
+	v1.RegisterTokenServiceServer(srv, tokenSvc)
 	return srv
 }

@@ -2,7 +2,6 @@ package bootstrap
 
 import (
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
-	"github.com/devexps/go-examples/micro-blog/pkg/middleware/metadata"
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
@@ -14,16 +13,21 @@ import (
 func CreateHttpServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microHttp.Server {
 	var opts = []microHttp.ServerOption{
 		microHttp.Filter(handlers.CORS(
-			handlers.AllowedHeaders(cfg.Server.Http.Headers),
-			handlers.AllowedMethods(cfg.Server.Http.Methods),
-			handlers.AllowedOrigins(cfg.Server.Http.Origins),
+			handlers.AllowedHeaders(cfg.Server.Http.Cors.Headers),
+			handlers.AllowedMethods(cfg.Server.Http.Cors.Methods),
+			handlers.AllowedOrigins(cfg.Server.Http.Cors.Origins),
 		)),
 	}
 
 	var ms []middleware.Middleware
-	ms = append(ms, recovery.Recovery())
-	ms = append(ms, metadata.Server())
-	ms = append(ms, tracing.Server())
+	if cfg.Server.Http.Middleware != nil {
+		if cfg.Server.Http.Middleware.GetEnableRecovery() {
+			ms = append(ms, recovery.Recovery())
+		}
+		if cfg.Server.Http.Middleware.GetEnableTracing() {
+			ms = append(ms, tracing.Server())
+		}
+	}
 	ms = append(ms, m...)
 	opts = append(opts, microHttp.Middleware(ms...))
 

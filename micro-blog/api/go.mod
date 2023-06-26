@@ -3,7 +3,7 @@ module github.com/devexps/go-examples/micro-blog/api
 go 1.18
 
 require (
-	github.com/devexps/go-micro/v2 v2.0.0-20230606092837-4542e486e7ff
+	github.com/devexps/go-micro/v2 v2.0.0-20230622035901-c7c1de5c995c
 	github.com/golang/protobuf v1.5.2
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd
 	google.golang.org/grpc v1.46.2
@@ -15,6 +15,7 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/sync v0.0.0-20220513210516-0976fa681c29 // indirect
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

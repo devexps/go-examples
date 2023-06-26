@@ -7,7 +7,6 @@ import (
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/registry"
 	"github.com/devexps/go-micro/v2/transport/grpc"
-	"github.com/devexps/go-micro/v2/transport/http"
 )
 
 // go build -ldflags "-X main.Version=x.y.z"
@@ -21,7 +20,7 @@ var (
 	)
 )
 
-func newApp(ll log.Logger, hs *http.Server, gs *grpc.Server, rr registry.Registrar) *micro.App {
+func newApp(ll log.Logger, gs *grpc.Server, rr registry.Registrar) *micro.App {
 	return micro.New(
 		micro.ID(Service.GetInstanceId()),
 		micro.Name(Service.Name),
@@ -29,7 +28,6 @@ func newApp(ll log.Logger, hs *http.Server, gs *grpc.Server, rr registry.Registr
 		micro.Metadata(Service.Metadata),
 		micro.Logger(ll),
 		micro.Server(
-			hs,
 			gs,
 		),
 		micro.Registrar(rr),
