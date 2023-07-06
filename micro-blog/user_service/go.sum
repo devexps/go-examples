@@ -51,8 +51,8 @@ github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230622091925-6ad29e8f339
 github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230622091925-6ad29e8f3392/go.mod h1:Tbj0KnnZ6FVI3FO87YJH1zO0944psTQfcpI3xPJyynQ=
 github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230622091925-6ad29e8f3392 h1:YImcj65aBW8mu0MKDJ8phtx5l4evam28Q1nV2y51HV0=
 github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230622091925-6ad29e8f3392/go.mod h1:TYPAf12aqA9CJE+YHoIfr16MduPrkqab632NsRjwxLY=
-github.com/devexps/go-micro/v2 v2.0.0-20230622091925-6ad29e8f3392 h1:eQZURsehGTS/KFl3Iqy5cBrp3eAmV4pEZP2Edo07aZo=
-github.com/devexps/go-micro/v2 v2.0.0-20230622091925-6ad29e8f3392/go.mod h1:qV2ac9OzaI4dZzKD4lC90bgeLyRI+IgmZDlOmewoF4Q=
+github.com/devexps/go-micro/v2 v2.0.0-20230706071008-57f5b2549f21 h1:+DvY6Dpypiyw7kKa9BFrcjz42i5NxyDe8kCHVkdzKNw=
+github.com/devexps/go-micro/v2 v2.0.0-20230706071008-57f5b2549f21/go.mod h1:qV2ac9OzaI4dZzKD4lC90bgeLyRI+IgmZDlOmewoF4Q=
 github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f h1:lO4WD4F/rVNCu3HqELle0jiPLLBs70cWOduZpkS1E78=
 github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f/go.mod h1:cuUVRXasLTGF7a8hSLbxyZXjz+1KgoB3wDUb6vlszIc=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=

@@ -11,7 +11,7 @@ require (
 	entgo.io/ent v0.11.10
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230622091925-6ad29e8f3392
+	github.com/devexps/go-micro/v2 v2.0.0-20230706071008-57f5b2549f21
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/wire v0.5.0
 )

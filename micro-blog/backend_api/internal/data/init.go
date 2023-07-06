@@ -8,6 +8,7 @@ var ProviderSet = wire.NewSet(
 
 	NewDiscovery,
 	NewAuthenticator,
+	NewAuthorizer,
 
 	NewUserServiceClient,
 	NewTokenServiceClient,

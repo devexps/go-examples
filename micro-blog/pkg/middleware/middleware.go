@@ -5,6 +5,7 @@ import (
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
 	midAuthn "github.com/devexps/go-micro/v2/middleware/authn"
+	midAuthz "github.com/devexps/go-micro/v2/middleware/authz"
 	"github.com/devexps/go-micro/v2/middleware/logging"
 	"github.com/devexps/go-micro/v2/middleware/selector"
 	"github.com/devexps/go-micro/v2/transport"
@@ -25,6 +26,9 @@ func NewMiddlewares(opts ...Option) []middleware.Middleware {
 		sms = append(sms, midAuthn.Server(ops.authenticator))
 	}
 	sms = append(sms, Server())
+	if ops.authorizer != nil {
+		sms = append(sms, midAuthz.Server(ops.authorizer))
+	}
 	sec := selector.Server(sms...)
 	if ops.matcher != nil {
 		sec = sec.Match(ops.matcher)
@@ -47,7 +51,8 @@ func Server() middleware.Middleware {
 				return handler(ctx, req)
 			}
 			log.Info(authnClaims)
-			return handler(ctx, req)
+			newCtx := midAuthz.NewContext(ctx, NewAuthzClaims(authnClaims.GetSubject(), tr.Operation(), "*", ""))
+			return handler(newCtx, req)
 		}
 	}
 }

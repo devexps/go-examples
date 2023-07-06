@@ -7,6 +7,7 @@ import (
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
 	authnEngine "github.com/devexps/go-micro/v2/middleware/authn/engine"
+	authzEngine "github.com/devexps/go-micro/v2/middleware/authz/engine"
 	"github.com/devexps/go-micro/v2/middleware/selector"
 )
 
@@ -25,10 +26,12 @@ func newWhiteListMatcher() selector.MatchFunc {
 // NewMiddlewares .
 func NewMiddlewares(logger log.Logger,
 	authenticator authnEngine.Authenticator,
+	authorizer authzEngine.Authorizer,
 ) []middleware.Middleware {
 	return pkgMid.NewMiddlewares(
 		pkgMid.WithLogger(logger),
 		pkgMid.WithAuthenticator(authenticator),
+		pkgMid.WithAuthorizer(authorizer),
 		pkgMid.WithMatcher(newWhiteListMatcher()),
 	)
 }

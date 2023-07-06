@@ -3,6 +3,7 @@ package middleware
 import (
 	"github.com/devexps/go-micro/v2/log"
 	authnEngine "github.com/devexps/go-micro/v2/middleware/authn/engine"
+	authzEngine "github.com/devexps/go-micro/v2/middleware/authz/engine"
 	"github.com/devexps/go-micro/v2/middleware/selector"
 )
 
@@ -14,6 +15,7 @@ type options struct {
 	matcher selector.MatchFunc
 
 	authenticator authnEngine.Authenticator
+	authorizer    authzEngine.Authorizer
 }
 
 // WithLogger .
@@ -34,5 +36,12 @@ func WithMatcher(matcher selector.MatchFunc) Option {
 func WithAuthenticator(authenticator authnEngine.Authenticator) Option {
 	return func(o *options) {
 		o.authenticator = authenticator
+	}
+}
+
+// WithAuthorizer .
+func WithAuthorizer(authorizer authzEngine.Authorizer) Option {
+	return func(o *options) {
+		o.authorizer = authorizer
 	}
 }
