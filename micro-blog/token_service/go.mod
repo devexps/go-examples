@@ -10,7 +10,7 @@ replace (
 require (
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230622091925-6ad29e8f3392
+	github.com/devexps/go-micro/v2 v2.0.0-20230706071008-57f5b2549f21
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-jwt/jwt/v4 v4.4.1

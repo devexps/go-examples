@@ -43,6 +43,7 @@ func (r *userRepo) VerifyPassword(ctx context.Context, userName string, password
 		}
 		return nil, v1.ErrorUserNotFound("User not found")
 	}
+	r.log.Info(crypto.HashPassword(password))
 	bMatched := crypto.CheckPasswordHash(password, u.Password)
 	if !bMatched {
 		return nil, v1.ErrorUserNotFound("User not found")

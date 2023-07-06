@@ -7,10 +7,12 @@ replace github.com/devexps/go-examples/micro-blog/api => ../api
 require (
 	entgo.io/contrib v0.3.5
 	entgo.io/ent v0.11.10
+	github.com/casbin/casbin/v2 v2.71.1
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230622091925-6ad29e8f3392
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230622091925-6ad29e8f3392
-	github.com/devexps/go-micro/v2 v2.0.0-20230622091925-6ad29e8f3392
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230706101852-c0ec2a04972d
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230706083117-dd4fa6466a55
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230706083117-dd4fa6466a55
+	github.com/devexps/go-micro/v2 v2.0.0-20230706101852-c0ec2a04972d
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/gorilla/handlers v1.5.1
@@ -21,11 +23,13 @@ require (
 	go.opentelemetry.io/otel/exporters/jaeger v1.11.1
 	go.opentelemetry.io/otel/exporters/zipkin v1.13.0
 	go.opentelemetry.io/otel/sdk v1.13.0
+	golang.org/x/crypto v0.0.0-20221010152910-d6f0a8c073c2
 	google.golang.org/grpc v1.52.3
 )
 
 require (
 	ariga.io/atlas v0.9.2-0.20230303073438-03a4779a6338 // indirect
+	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible // indirect
 	github.com/agext/levenshtein v1.2.1 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect

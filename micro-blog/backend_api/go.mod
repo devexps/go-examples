@@ -10,18 +10,21 @@ replace (
 require (
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230622091925-6ad29e8f3392
+	github.com/devexps/go-micro/v2 v2.0.0-20230706101852-c0ec2a04972d
 	github.com/golang/protobuf v1.5.3
 	github.com/google/wire v0.5.0
 )
 
 require (
+	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect
+	github.com/casbin/casbin/v2 v2.71.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230622091925-6ad29e8f3392 // indirect
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230622091925-6ad29e8f3392 // indirect
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230706101852-c0ec2a04972d // indirect
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230706083117-dd4fa6466a55 // indirect
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230706083117-dd4fa6466a55 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
@@ -53,6 +56,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/openzipkin/zipkin-go v0.4.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/stretchr/objx v0.5.0 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.9 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.9 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.8 // indirect

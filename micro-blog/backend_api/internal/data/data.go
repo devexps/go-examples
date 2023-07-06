@@ -10,6 +10,7 @@ import (
 	"github.com/devexps/go-examples/micro-blog/pkg/service"
 	"github.com/devexps/go-micro/v2/log"
 	authnEngine "github.com/devexps/go-micro/v2/middleware/authn/engine"
+	authzEngine "github.com/devexps/go-micro/v2/middleware/authz/engine"
 	"github.com/devexps/go-micro/v2/registry"
 )
 
@@ -18,6 +19,7 @@ type Data struct {
 	log *log.Helper
 
 	authenticator authnEngine.Authenticator
+	authorizer    authzEngine.Authorizer
 
 	userClient  userV1.UserServiceClient
 	tokenClient tokenV1.TokenServiceClient
@@ -26,19 +28,21 @@ type Data struct {
 // NewData .
 func NewData(cfg *conf.Bootstrap, logger log.Logger,
 	authenticator authnEngine.Authenticator,
+	authorizer authzEngine.Authorizer,
 	userClient userV1.UserServiceClient,
 	tokenClient tokenV1.TokenServiceClient,
 ) (*Data, func(), error) {
 	l := log.NewHelper(log.With(logger, "module", "data"))
-	cleanup := func() {
-		l.Info("closing the data resources")
-	}
-	return &Data{
+	d := &Data{
 		log:           l,
 		authenticator: authenticator,
+		authorizer:    authorizer,
 		userClient:    userClient,
 		tokenClient:   tokenClient,
-	}, cleanup, nil
+	}
+	return d, func() {
+		l.Info("closing the data resources")
+	}, nil
 }
 
 // NewDiscovery .
@@ -49,6 +53,11 @@ func NewDiscovery(cfg *conf.Bootstrap) registry.Discovery {
 // NewAuthenticator .
 func NewAuthenticator(tokenClient tokenV1.TokenServiceClient) authnEngine.Authenticator {
 	return middleware.NewAuthenticator(tokenClient)
+}
+
+// NewAuthorizer .
+func NewAuthorizer() authzEngine.Authorizer {
+	return middleware.NewAuthorizer()
 }
 
 // NewUserServiceClient .
