@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"context"
-	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
 	midAuthn "github.com/devexps/go-micro/v2/middleware/authn"
 	midAuthz "github.com/devexps/go-micro/v2/middleware/authz"
@@ -50,7 +49,6 @@ func Server() middleware.Middleware {
 				return handler(ctx, req)
 			}
 			authzClaims := NewAuthzClaims(authnClaims.GetSubject(), tr.Operation(), "ANY", "")
-			log.Info(authnClaims, authzClaims)
 			return handler(midAuthz.NewContext(ctx, authzClaims), req)
 		}
 	}

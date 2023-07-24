@@ -6,8 +6,10 @@ import (
 	"github.com/devexps/go-micro/v2/middleware/authn/engine"
 )
 
+type fn func(context.Context, string) (engine.Claims, error)
+
 type authenticator struct {
-	opts *options
+	claimsFn fn
 }
 
 var _ engine.Authenticator = (*authenticator)(nil)
@@ -19,14 +21,22 @@ var (
 )
 
 // NewAuthenticator .
-func NewAuthenticator(opts ...Option) (engine.Authenticator, error) {
-	auth := &authenticator{
-		opts: &options{},
-	}
+func NewAuthenticator(opts ...Option) engine.Authenticator {
+	auth := &authenticator{}
 	for _, o := range opts {
-		o(auth.opts)
+		o(auth)
 	}
-	return auth, nil
+	return auth
+}
+
+// Option .
+type Option func(*authenticator)
+
+// WithClaimsFn .
+func WithClaimsFn(f fn) Option {
+	return func(o *authenticator) {
+		o.claimsFn = f
+	}
 }
 
 // Authenticate .
@@ -35,10 +45,10 @@ func (a *authenticator) Authenticate(ctx context.Context, ctxType engine.Context
 	if err != nil {
 		return nil, ErrMissingBearerToken
 	}
-	if a.opts.claimsFn == nil {
+	if a.claimsFn == nil {
 		return nil, ErrMissingClaimsFunc
 	}
-	claims, err := a.opts.claimsFn(ctx, tokenString)
+	claims, err := a.claimsFn(ctx, tokenString)
 	if err != nil {
 		return nil, ErrUnauthenticated
 	}
