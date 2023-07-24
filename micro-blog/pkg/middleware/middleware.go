@@ -45,14 +45,13 @@ func Server() middleware.Middleware {
 			if !ok {
 				return handler(ctx, req)
 			}
-			log.Info(tr)
 			authnClaims, ok := midAuthn.FromContext(ctx)
 			if !ok {
 				return handler(ctx, req)
 			}
-			log.Info(authnClaims)
-			newCtx := midAuthz.NewContext(ctx, NewAuthzClaims(authnClaims.GetSubject(), tr.Operation(), "*", ""))
-			return handler(newCtx, req)
+			authzClaims := NewAuthzClaims(authnClaims.GetSubject(), tr.Operation(), "ANY", "")
+			log.Info(authnClaims, authzClaims)
+			return handler(midAuthz.NewContext(ctx, authzClaims), req)
 		}
 	}
 }

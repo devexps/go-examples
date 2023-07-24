@@ -2,6 +2,7 @@ package data
 
 import (
 	"context"
+	casbinV1 "github.com/devexps/go-casbin/api/gen/go/casbin_service/v1"
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
 	tokenV1 "github.com/devexps/go-examples/micro-blog/api/gen/go/token_service/v1"
 	userV1 "github.com/devexps/go-examples/micro-blog/api/gen/go/user_service/v1"
@@ -21,8 +22,9 @@ type Data struct {
 	authenticator authnEngine.Authenticator
 	authorizer    authzEngine.Authorizer
 
-	userClient  userV1.UserServiceClient
-	tokenClient tokenV1.TokenServiceClient
+	userClient   userV1.UserServiceClient
+	tokenClient  tokenV1.TokenServiceClient
+	casbinClient casbinV1.CasbinServiceClient
 }
 
 // NewData .
@@ -31,6 +33,7 @@ func NewData(cfg *conf.Bootstrap, logger log.Logger,
 	authorizer authzEngine.Authorizer,
 	userClient userV1.UserServiceClient,
 	tokenClient tokenV1.TokenServiceClient,
+	casbinClient casbinV1.CasbinServiceClient,
 ) (*Data, func(), error) {
 	l := log.NewHelper(log.With(logger, "module", "data"))
 	d := &Data{
@@ -39,6 +42,7 @@ func NewData(cfg *conf.Bootstrap, logger log.Logger,
 		authorizer:    authorizer,
 		userClient:    userClient,
 		tokenClient:   tokenClient,
+		casbinClient:  casbinClient,
 	}
 	return d, func() {
 		l.Info("closing the data resources")
@@ -56,8 +60,8 @@ func NewAuthenticator(tokenClient tokenV1.TokenServiceClient) authnEngine.Authen
 }
 
 // NewAuthorizer .
-func NewAuthorizer() authzEngine.Authorizer {
-	return middleware.NewAuthorizer()
+func NewAuthorizer(casbinClient casbinV1.CasbinServiceClient) authzEngine.Authorizer {
+	return middleware.NewAuthorizer(casbinClient)
 }
 
 // NewUserServiceClient .
@@ -68,4 +72,9 @@ func NewUserServiceClient(cfg *conf.Bootstrap, r registry.Discovery) userV1.User
 // NewTokenServiceClient .
 func NewTokenServiceClient(cfg *conf.Bootstrap, r registry.Discovery) tokenV1.TokenServiceClient {
 	return tokenV1.NewTokenServiceClient(bootstrap.CreateGrpcClient(cfg, context.Background(), r, service.TokenService))
+}
+
+// NewCasbinServiceClient .
+func NewCasbinServiceClient(cfg *conf.Bootstrap, r registry.Discovery) casbinV1.CasbinServiceClient {
+	return casbinV1.NewCasbinServiceClient(bootstrap.CreateGrpcClient(cfg, context.Background(), r, service.CasbinService))
 }

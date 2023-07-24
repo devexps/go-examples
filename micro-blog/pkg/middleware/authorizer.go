@@ -1,23 +1,52 @@
 package middleware
 
 import (
-	"fmt"
-	"github.com/casbin/casbin/v2/model"
-	fileAdapter "github.com/casbin/casbin/v2/persist/file-adapter"
+	"context"
+	casbinV1 "github.com/devexps/go-casbin/api/gen/go/casbin_service/v1"
 	"github.com/devexps/go-micro/middleware/authz/engine/casbin/v2"
-	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware/authz/engine"
 )
 
-// NewAuthorizer .
-func NewAuthorizer() engine.Authorizer {
-	m, _ := model.NewModelFromFile("./configs/authz/authz_model.conf")
-	p := fileAdapter.NewAdapter("./configs/authz/authz_policy.csv")
-	a, err := casbin.NewAuthorizer(casbin.WithModel(m), casbin.WithPolicy(p))
-	if err != nil {
-		log.Fatal("new authorizer error: ", err)
+type authorizer struct {
+	client casbinV1.CasbinServiceClient
+}
+
+// IsAuthorized .
+func (a *authorizer) IsAuthorized(ctx context.Context) error {
+	claims, ok := engine.FromContext(ctx)
+	if !ok {
+		return casbin.ErrMissingClaims
 	}
-	return a
+	if len(claims.GetSubject()) == 0 || len(claims.GetResource()) == 0 || len(claims.GetAction()) == 0 {
+		return casbin.ErrInvalidClaims
+	}
+	var (
+		allowed *casbinV1.BoolReply
+		err     error
+	)
+	if len(claims.GetProject()) > 0 {
+		allowed, err = a.client.Enforce(ctx, &casbinV1.EnforceRequest{
+			Params: []string{claims.GetSubject(), claims.GetResource(), claims.GetAction(), claims.GetProject()},
+		})
+	} else {
+		allowed, err = a.client.Enforce(ctx, &casbinV1.EnforceRequest{
+			Params: []string{claims.GetSubject(), claims.GetResource(), claims.GetAction()},
+		})
+	}
+	if err != nil {
+		return casbin.ErrUnauthorized
+	}
+	if !allowed.Res {
+		return casbin.ErrUnauthorized
+	}
+	return nil
+}
+
+// NewAuthorizer .
+func NewAuthorizer(client casbinV1.CasbinServiceClient) engine.Authorizer {
+	return &authorizer{
+		client: client,
+	}
 }
 
 type authzClaimsMsg struct {
@@ -26,7 +55,6 @@ type authzClaimsMsg struct {
 
 // NewAuthzClaims .
 func NewAuthzClaims(subject, resource, action, project string) engine.Claims {
-	fmt.Println(subject, resource, action, project)
 	return &authzClaimsMsg{
 		subject:  subject,
 		resource: resource,
@@ -35,18 +63,22 @@ func NewAuthzClaims(subject, resource, action, project string) engine.Claims {
 	}
 }
 
+// GetSubject .
 func (a *authzClaimsMsg) GetSubject() string {
 	return a.subject
 }
 
+// GetAction .
 func (a *authzClaimsMsg) GetAction() string {
 	return a.action
 }
 
+// GetResource .
 func (a *authzClaimsMsg) GetResource() string {
 	return a.resource
 }
 
+// GetProject .
 func (a *authzClaimsMsg) GetProject() string {
 	return a.project
 }
