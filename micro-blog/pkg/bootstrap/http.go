@@ -3,6 +3,7 @@ package bootstrap
 import (
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
 	"github.com/devexps/go-micro/v2/middleware"
+	"github.com/devexps/go-micro/v2/middleware/metrics"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	microHttp "github.com/devexps/go-micro/v2/transport/http"
@@ -27,6 +28,9 @@ func CreateHttpServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microHtt
 		if cfg.Server.Http.Middleware.GetEnableTracing() {
 			ms = append(ms, tracing.Server())
 		}
+		if cfg.Server.Http.Middleware.GetEnableMetrics() {
+			ms = append(ms, metrics.Server(withMetricRequests(), withMetricHistogram()))
+		}
 	}
 	ms = append(ms, m...)
 	opts = append(opts, microHttp.Middleware(ms...))
@@ -40,5 +44,9 @@ func CreateHttpServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microHtt
 	if cfg.Server.Http.Timeout != nil {
 		opts = append(opts, microHttp.Timeout(cfg.Server.Http.Timeout.AsDuration()))
 	}
-	return microHttp.NewServer(opts...)
+	srv := microHttp.NewServer(opts...)
+	if cfg.Server.Http.Middleware.GetEnableMetrics() {
+		handleMetrics(srv)
+	}
+	return srv
 }

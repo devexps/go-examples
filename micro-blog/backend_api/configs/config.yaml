@@ -18,6 +18,7 @@ server:
     middleware:
       enable_recovery: true
       enable_tracing: true
+      enable_metrics: true
       auth:
         method: "HS256"
         key: "some_api_key"

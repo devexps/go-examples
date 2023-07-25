@@ -9,14 +9,16 @@ require (
 	entgo.io/ent v0.11.10
 	github.com/devexps/go-casbin/api v0.0.0-20230721100032-15ceb89db435
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230706101852-c0ec2a04972d
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230706083117-dd4fa6466a55
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230706083117-dd4fa6466a55
-	github.com/devexps/go-micro/v2 v2.0.0-20230706101852-c0ec2a04972d
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230724100120-97a8a51130b3
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230724100120-97a8a51130b3
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230724100120-97a8a51130b3
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230724100120-97a8a51130b3
+	github.com/devexps/go-micro/v2 v2.0.0-20230724100120-97a8a51130b3
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/gorilla/handlers v1.5.1
 	github.com/hashicorp/consul/api v1.20.0
+	github.com/prometheus/client_golang v1.16.0
 	go.etcd.io/etcd/client/v3 v3.5.8
 	go.opentelemetry.io/contrib/propagators/b3 v1.16.1
 	go.opentelemetry.io/otel v1.15.1
@@ -33,6 +35,7 @@ require (
 	github.com/agext/levenshtein v1.2.1 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect
+	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/casbin/casbin/v2 v2.71.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
@@ -63,10 +66,14 @@ require (
 	github.com/jhump/protoreflect v1.10.1 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
+	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/go-wordwrap v0.0.0-20150314170334-ad45545899c7 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/openzipkin/zipkin-go v0.4.1 // indirect
+	github.com/prometheus/client_model v0.3.0 // indirect
+	github.com/prometheus/common v0.42.0 // indirect
+	github.com/prometheus/procfs v0.10.1 // indirect
 	github.com/zclconf/go-cty v1.8.0 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.8 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.8 // indirect
@@ -76,8 +83,8 @@ require (
 	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/mod v0.8.0 // indirect
 	golang.org/x/net v0.9.0 // indirect
-	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/sync v0.2.0 // indirect
+	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/tools v0.6.1-0.20230222164832-25d2519c8696 // indirect
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect

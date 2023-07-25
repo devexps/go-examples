@@ -5,6 +5,7 @@ import (
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
+	"github.com/devexps/go-micro/v2/middleware/metrics"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	"github.com/devexps/go-micro/v2/registry"
@@ -58,6 +59,9 @@ func CreateGrpcServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microGrp
 		}
 		if cfg.Server.Grpc.Middleware.GetEnableTracing() {
 			ms = append(ms, tracing.Server())
+		}
+		if cfg.Server.Http.Middleware.GetEnableMetrics() {
+			ms = append(ms, metrics.Server(withMetricRequests(), withMetricHistogram()))
 		}
 	}
 	ms = append(ms, m...)
