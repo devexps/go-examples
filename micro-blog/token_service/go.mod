@@ -10,7 +10,7 @@ replace (
 require (
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230819033441-71093fd5593d
+	github.com/devexps/go-micro/v2 v2.0.0-20230819044411-f9c1eb26c1a6
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang-jwt/jwt/v4 v4.4.1
@@ -24,9 +24,9 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230819033441-71093fd5593d // indirect
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230819033441-71093fd5593d // indirect
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230819033441-71093fd5593d // indirect
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230819044411-f9c1eb26c1a6 // indirect
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230819044411-f9c1eb26c1a6 // indirect
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230819044411-f9c1eb26c1a6 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect

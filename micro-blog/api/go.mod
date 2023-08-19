@@ -3,7 +3,7 @@ module github.com/devexps/go-examples/micro-blog/api
 go 1.18
 
 require (
-	github.com/devexps/go-micro/v2 v2.0.0-20230819033441-71093fd5593d
+	github.com/devexps/go-micro/v2 v2.0.0-20230819044411-f9c1eb26c1a6
 	github.com/golang/protobuf v1.5.2
 	github.com/google/gnostic v0.6.9
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd

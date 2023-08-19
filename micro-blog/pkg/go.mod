@@ -7,13 +7,13 @@ replace github.com/devexps/go-examples/micro-blog/api => ../api
 require (
 	entgo.io/contrib v0.3.5
 	entgo.io/ent v0.11.10
-	github.com/devexps/go-casbin/api v0.0.0-20230721100032-15ceb89db435
+	github.com/devexps/go-casbin/api v0.0.0-20230819040241-a68a0a0000c2
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230819033441-71093fd5593d
-	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230819033441-71093fd5593d
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230819033441-71093fd5593d
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230819033441-71093fd5593d
-	github.com/devexps/go-micro/v2 v2.0.0-20230819033441-71093fd5593d
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230819044411-f9c1eb26c1a6
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230819044411-f9c1eb26c1a6
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230819044411-f9c1eb26c1a6
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230819044411-f9c1eb26c1a6
+	github.com/devexps/go-micro/v2 v2.0.0-20230819044411-f9c1eb26c1a6
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/gorilla/handlers v1.5.1

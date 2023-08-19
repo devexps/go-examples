@@ -8,10 +8,10 @@ replace (
 )
 
 require (
-	github.com/devexps/go-casbin/api v0.0.0-20230721100032-15ceb89db435
+	github.com/devexps/go-casbin/api v0.0.0-20230819040241-a68a0a0000c2
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230819033441-71093fd5593d
+	github.com/devexps/go-micro/v2 v2.0.0-20230819044411-f9c1eb26c1a6
 	github.com/golang/protobuf v1.5.3
 	github.com/google/wire v0.5.0
 )
@@ -24,10 +24,10 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230819033441-71093fd5593d // indirect
-	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230819033441-71093fd5593d // indirect
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230819033441-71093fd5593d // indirect
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230819033441-71093fd5593d // indirect
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230819044411-f9c1eb26c1a6 // indirect
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230819044411-f9c1eb26c1a6 // indirect
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230819044411-f9c1eb26c1a6 // indirect
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230819044411-f9c1eb26c1a6 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect

@@ -17,8 +17,8 @@ github.com/cncf/xds/go v0.0.0-20211001041855-01bcc9b48dfe/go.mod h1:eXthEFrGJvWH
 github.com/cncf/xds/go v0.0.0-20211011173535-cb28da3451f1/go.mod h1:eXthEFrGJvWHgFFCl3hGmgk+/aYT6PnTQLykKQRLhEs=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/devexps/go-micro/v2 v2.0.0-20230726030419-a409cedfff75 h1:OWtN/WtS0zbUTqotJevPO8EhXkboAZkTZpIdsw88Kpg=
-github.com/devexps/go-micro/v2 v2.0.0-20230726030419-a409cedfff75/go.mod h1:qV2ac9OzaI4dZzKD4lC90bgeLyRI+IgmZDlOmewoF4Q=
+github.com/devexps/go-micro/v2 v2.0.0-20230819044411-f9c1eb26c1a6 h1:I8E7ixcbq0tcRasAI2XGgI3ALlnMsnKE7+XPWLnnWs8=
+github.com/devexps/go-micro/v2 v2.0.0-20230819044411-f9c1eb26c1a6/go.mod h1:qV2ac9OzaI4dZzKD4lC90bgeLyRI+IgmZDlOmewoF4Q=
 github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815/go.mod h1:WwZ+bS3ebgob9U8Nd0kOddGdZWjyMGR8Wziv+TBNwSE=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
