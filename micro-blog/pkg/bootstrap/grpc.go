@@ -60,7 +60,7 @@ func CreateGrpcServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microGrp
 		if cfg.Server.Grpc.Middleware.GetEnableTracing() {
 			ms = append(ms, tracing.Server())
 		}
-		if cfg.Server.Http.Middleware.GetEnableMetrics() {
+		if cfg.Server.Grpc.Middleware.GetEnableMetrics() {
 			ms = append(ms, metrics.Server(withMetricRequests(), withMetricHistogram()))
 		}
 	}
