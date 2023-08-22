@@ -4,3 +4,5 @@ This sample project was created as a collection of the various things I've learn
 - The interface and inheritance of golang ([go-inheritance](inheritance))
 - An example of remote calls using http and gRPC ([helloworld](helloworld))
 - A Golang blogging system | CMS ([micro-blog](micro-blog))
+- A Golang Business Intelligence System ([BI](../go-bi))
+- [Server-Sent Events](../go-sse) (SSE for short)
