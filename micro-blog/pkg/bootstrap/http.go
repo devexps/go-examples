@@ -6,6 +6,7 @@ import (
 	"github.com/devexps/go-micro/v2/middleware/metrics"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
+	"github.com/devexps/go-micro/v2/middleware/validate"
 	microHttp "github.com/devexps/go-micro/v2/transport/http"
 	"github.com/gorilla/handlers"
 )
@@ -27,6 +28,9 @@ func CreateHttpServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microHtt
 		}
 		if cfg.Server.Http.Middleware.GetEnableTracing() {
 			ms = append(ms, tracing.Server())
+		}
+		if cfg.Server.Http.Middleware.GetEnableValidate() {
+			ms = append(ms, validate.Validator())
 		}
 		if cfg.Server.Http.Middleware.GetEnableMetrics() {
 			ms = append(ms, metrics.Server(withMetricRequests(), withMetricHistogram()))

@@ -9,11 +9,11 @@ require (
 	entgo.io/ent v0.11.10
 	github.com/devexps/go-casbin/api v0.0.0-20230819040241-a68a0a0000c2
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230819044411-f9c1eb26c1a6
-	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230819044411-f9c1eb26c1a6
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230819044411-f9c1eb26c1a6
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230819044411-f9c1eb26c1a6
-	github.com/devexps/go-micro/v2 v2.0.0-20230819044411-f9c1eb26c1a6
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230824092603-e11527d08acc
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230824092603-e11527d08acc
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230824092603-e11527d08acc
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230824092603-e11527d08acc
+	github.com/devexps/go-micro/v2 v2.0.0-20230824092603-e11527d08acc
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/gorilla/handlers v1.5.1
@@ -47,12 +47,12 @@ require (
 	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/inflect v0.19.0 // indirect
-	github.com/go-playground/form/v4 v4.2.0 // indirect
+	github.com/go-playground/form/v4 v4.2.1 // indirect
 	github.com/go-redis/redis/extra/rediscmd/v8 v8.11.5 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
-	github.com/google/uuid v1.3.0 // indirect
+	github.com/google/uuid v1.3.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.1 // indirect
@@ -83,7 +83,7 @@ require (
 	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/mod v0.8.0 // indirect
 	golang.org/x/net v0.9.0 // indirect
-	golang.org/x/sync v0.2.0 // indirect
+	golang.org/x/sync v0.3.0 // indirect
 	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/tools v0.6.1-0.20230222164832-25d2519c8696 // indirect

@@ -13,7 +13,8 @@ message Middleware {
 
   bool enable_recovery = 1;
   bool enable_tracing = 2;
-  bool enable_metrics = 3;
+  bool enable_validate = 3;
+  bool enable_metrics = 4;
 
   Auth auth = 10;
 }

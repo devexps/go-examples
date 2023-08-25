@@ -5,9 +5,9 @@ import (
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
-	"github.com/devexps/go-micro/v2/middleware/metrics"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
+	"github.com/devexps/go-micro/v2/middleware/validate"
 	"github.com/devexps/go-micro/v2/registry"
 	microGrpc "github.com/devexps/go-micro/v2/transport/grpc"
 	"google.golang.org/grpc"
@@ -31,6 +31,9 @@ func CreateGrpcClient(cfg *conf.Bootstrap, ctx context.Context, r registry.Disco
 		}
 		if cfg.Client.Grpc.Middleware.GetEnableTracing() {
 			ms = append(ms, tracing.Client())
+		}
+		if cfg.Client.Grpc.Middleware.GetEnableValidate() {
+			ms = append(ms, validate.Validator())
 		}
 	}
 	ms = append(ms, m...)
@@ -60,8 +63,8 @@ func CreateGrpcServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microGrp
 		if cfg.Server.Grpc.Middleware.GetEnableTracing() {
 			ms = append(ms, tracing.Server())
 		}
-		if cfg.Server.Grpc.Middleware.GetEnableMetrics() {
-			ms = append(ms, metrics.Server(withMetricRequests(), withMetricHistogram()))
+		if cfg.Server.Grpc.Middleware.GetEnableValidate() {
+			ms = append(ms, validate.Validator())
 		}
 	}
 	ms = append(ms, m...)

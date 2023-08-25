@@ -18,6 +18,6 @@ trace:
 
 data:
   database:
-    driver: mysql
-    source: micro:micro@tcp(127.0.0.1:3306)/test?parseTime=true
+    driver: "postgres"
+    source: "host=localhost port=5432 user=micro password=micro@123 dbname=micro sslmode=disable"
     migrate: true

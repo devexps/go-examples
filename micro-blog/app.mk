@@ -33,6 +33,7 @@ proto:
 		--go-http_out=paths=source_relative:../gen/go \
 		--go-grpc_out=paths=source_relative:../gen/go \
 		--go-errors_out=paths=source_relative:../gen/go \
+		--validate_out=paths=source_relative,lang=go:../gen/go \
 		--openapi_out=fq_schema_naming=true,default_response=false:../gen/docs \
 		$(API_PROTO_FILES)
 
