@@ -15,6 +15,7 @@ message Middleware {
   bool enable_tracing = 2;
   bool enable_validate = 3;
   bool enable_metrics = 4;
+  bool enable_circuit_breaker = 5;
 
   Auth auth = 10;
 }

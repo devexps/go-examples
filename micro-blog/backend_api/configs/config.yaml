@@ -40,6 +40,7 @@ client:
     middleware:
       enable_recovery: true
       enable_tracing: true
+      enable_circuit_breaker: true
 
 registry:
   type: "consul"

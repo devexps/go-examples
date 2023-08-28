@@ -11,7 +11,7 @@ require (
 	entgo.io/ent v0.11.10
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230824092603-e11527d08acc
+	github.com/devexps/go-micro/v2 v2.0.0-20230828051449-bae977d25bd8
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/wire v0.5.0
 	github.com/jackc/pgx/v4 v4.18.1
@@ -28,9 +28,9 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230824092603-e11527d08acc // indirect
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230824092603-e11527d08acc // indirect
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230824092603-e11527d08acc // indirect
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230828051449-bae977d25bd8 // indirect
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230828051449-bae977d25bd8 // indirect
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230828051449-bae977d25bd8 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect

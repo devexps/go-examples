@@ -3,7 +3,8 @@ module github.com/devexps/go-examples/micro-blog/api
 go 1.18
 
 require (
-	github.com/devexps/go-micro/v2 v2.0.0-20230824092603-e11527d08acc
+	github.com/devexps/go-micro/v2 v2.0.0-20230828051449-bae977d25bd8
+	github.com/envoyproxy/protoc-gen-validate v0.1.0
 	github.com/golang/protobuf v1.5.2
 	github.com/google/gnostic v0.6.9
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd

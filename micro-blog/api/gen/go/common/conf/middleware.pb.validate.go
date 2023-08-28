@@ -65,6 +65,8 @@ func (m *Middleware) validate(all bool) error {
 
 	// no validation rules for EnableMetrics
 
+	// no validation rules for EnableCircuitBreaker
+
 	if all {
 		switch v := interface{}(m.GetAuth()).(type) {
 		case interface{ ValidateAll() error }:

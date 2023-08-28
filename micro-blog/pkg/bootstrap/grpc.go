@@ -5,6 +5,7 @@ import (
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
+	"github.com/devexps/go-micro/v2/middleware/circuitbreaker"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	"github.com/devexps/go-micro/v2/middleware/validate"
@@ -32,8 +33,8 @@ func CreateGrpcClient(cfg *conf.Bootstrap, ctx context.Context, r registry.Disco
 		if cfg.Client.Grpc.Middleware.GetEnableTracing() {
 			ms = append(ms, tracing.Client())
 		}
-		if cfg.Client.Grpc.Middleware.GetEnableValidate() {
-			ms = append(ms, validate.Validator())
+		if cfg.Client.Grpc.Middleware.GetEnableCircuitBreaker() {
+			ms = append(ms, circuitbreaker.Client())
 		}
 	}
 	ms = append(ms, m...)

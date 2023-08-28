@@ -9,11 +9,11 @@ require (
 	entgo.io/ent v0.11.10
 	github.com/devexps/go-casbin/api v0.0.0-20230819040241-a68a0a0000c2
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230824092603-e11527d08acc
-	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230824092603-e11527d08acc
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230824092603-e11527d08acc
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230824092603-e11527d08acc
-	github.com/devexps/go-micro/v2 v2.0.0-20230824092603-e11527d08acc
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230828051449-bae977d25bd8
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230828051449-bae977d25bd8
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230828051449-bae977d25bd8
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230828051449-bae977d25bd8
+	github.com/devexps/go-micro/v2 v2.0.0-20230828051449-bae977d25bd8
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/gorilla/handlers v1.5.1
