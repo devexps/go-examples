@@ -1,7 +1,7 @@
 server:
   http:
     addr: 0.0.0.0:8080
-    timeout: 1s
+    timeout: 3s
     cors:
       headers:
         - "Content-Type"
@@ -20,16 +20,18 @@ server:
       enable_tracing: true
       enable_validate: true
       enable_metrics: true
+      enable_rate_limiter: true
       auth:
         method: "HS256"
         key: "some_api_key"
   grpc:
     addr: 0.0.0.0:9090
-    timeout: 1s
+    timeout: 3s
     middleware:
       enable_recovery: true
       enable_tracing: true
       enable_validate: true
+      enable_rate_limiter: true
       auth:
         method: "HS256"
         key: "some_api_key"

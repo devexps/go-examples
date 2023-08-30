@@ -16,6 +16,7 @@ message Middleware {
   bool enable_validate = 3;
   bool enable_metrics = 4;
   bool enable_circuit_breaker = 5;
+  bool enable_rate_limiter = 6;
 
   Auth auth = 10;
 }

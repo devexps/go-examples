@@ -11,7 +11,7 @@ require (
 	entgo.io/ent v0.11.10
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
 	github.com/devexps/go-examples/micro-blog/pkg v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/v2 v2.0.0-20230828051449-bae977d25bd8
+	github.com/devexps/go-micro/v2 v2.0.0-20230830060821-3293531ccd77
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/google/wire v0.5.0
 	github.com/jackc/pgx/v4 v4.18.1
@@ -21,6 +21,7 @@ require (
 require (
 	ariga.io/atlas v0.9.2-0.20230303073438-03a4779a6338 // indirect
 	entgo.io/contrib v0.3.5 // indirect
+	github.com/StackExchange/wmi v1.2.1 // indirect
 	github.com/agext/levenshtein v1.2.1 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect
@@ -28,15 +29,17 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230828051449-bae977d25bd8 // indirect
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230828051449-bae977d25bd8 // indirect
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230828051449-bae977d25bd8 // indirect
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230830060821-3293531ccd77 // indirect
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230830060821-3293531ccd77 // indirect
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230830060821-3293531ccd77 // indirect
+	github.com/devexps/go-pkg/v2 v2.0.0-20230830041653-2d2203e98e28 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/go-openapi/inflect v0.19.0 // indirect
 	github.com/go-playground/form/v4 v4.2.1 // indirect
 	github.com/go-redis/redis/extra/rediscmd/v8 v8.11.5 // indirect
@@ -78,6 +81,9 @@ require (
 	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.42.0 // indirect
 	github.com/prometheus/procfs v0.10.1 // indirect
+	github.com/shirou/gopsutil/v3 v3.21.8 // indirect
+	github.com/tklauser/go-sysconf v0.3.11 // indirect
+	github.com/tklauser/numcpus v0.6.0 // indirect
 	github.com/zclconf/go-cty v1.8.0 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.9 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.9 // indirect
@@ -95,7 +101,7 @@ require (
 	golang.org/x/mod v0.10.0 // indirect
 	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.8.0 // indirect
+	golang.org/x/sys v0.10.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/tools v0.8.1-0.20230428195545-5283a0178901 // indirect
 	google.golang.org/genproto v0.0.0-20230525234025-438c736192d0 // indirect

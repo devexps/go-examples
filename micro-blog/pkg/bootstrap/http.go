@@ -2,16 +2,18 @@ package bootstrap
 
 import (
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
+	"github.com/gorilla/handlers"
+
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/metrics"
+	"github.com/devexps/go-micro/v2/middleware/ratelimiter"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	"github.com/devexps/go-micro/v2/middleware/validate"
 	microHttp "github.com/devexps/go-micro/v2/transport/http"
-	"github.com/gorilla/handlers"
 )
 
-// CreateHttpServer creates a REST server
+// CreateHttpServer creates an HTTP server
 func CreateHttpServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microHttp.Server {
 	var opts = []microHttp.ServerOption{
 		microHttp.Filter(handlers.CORS(
@@ -31,6 +33,9 @@ func CreateHttpServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microHtt
 		}
 		if cfg.Server.Http.Middleware.GetEnableValidate() {
 			ms = append(ms, validate.Validator())
+		}
+		if cfg.Server.Http.Middleware.GetEnableRateLimiter() {
+			ms = append(ms, ratelimiter.Server())
 		}
 		if cfg.Server.Http.Middleware.GetEnableMetrics() {
 			ms = append(ms, metrics.Server(withMetricRequests(), withMetricHistogram()))

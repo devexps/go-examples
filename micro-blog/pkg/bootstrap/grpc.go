@@ -2,17 +2,20 @@ package bootstrap
 
 import (
 	"context"
+	"google.golang.org/grpc"
+	"time"
+
 	"github.com/devexps/go-examples/micro-blog/api/gen/go/common/conf"
+
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/circuitbreaker"
+	"github.com/devexps/go-micro/v2/middleware/ratelimiter"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	"github.com/devexps/go-micro/v2/middleware/validate"
 	"github.com/devexps/go-micro/v2/registry"
 	microGrpc "github.com/devexps/go-micro/v2/transport/grpc"
-	"google.golang.org/grpc"
-	"time"
 )
 
 const defaultTimeout = 5 * time.Second
@@ -66,6 +69,9 @@ func CreateGrpcServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microGrp
 		}
 		if cfg.Server.Grpc.Middleware.GetEnableValidate() {
 			ms = append(ms, validate.Validator())
+		}
+		if cfg.Server.Grpc.Middleware.GetEnableRateLimiter() {
+			ms = append(ms, ratelimiter.Server())
 		}
 	}
 	ms = append(ms, m...)

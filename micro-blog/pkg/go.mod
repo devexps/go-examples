@@ -9,11 +9,11 @@ require (
 	entgo.io/ent v0.11.10
 	github.com/devexps/go-casbin/api v0.0.0-20230819040241-a68a0a0000c2
 	github.com/devexps/go-examples/micro-blog/api v0.0.0-00010101000000-000000000000
-	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230828051449-bae977d25bd8
-	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230828051449-bae977d25bd8
-	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230828051449-bae977d25bd8
-	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230828051449-bae977d25bd8
-	github.com/devexps/go-micro/v2 v2.0.0-20230828051449-bae977d25bd8
+	github.com/devexps/go-micro/metrics/prometheus/v2 v2.0.0-20230830060821-3293531ccd77
+	github.com/devexps/go-micro/middleware/authz/engine/casbin/v2 v2.0.0-20230830060821-3293531ccd77
+	github.com/devexps/go-micro/registry/consul/v2 v2.0.0-20230830060821-3293531ccd77
+	github.com/devexps/go-micro/registry/etcd/v2 v2.0.0-20230830060821-3293531ccd77
+	github.com/devexps/go-micro/v2 v2.0.0-20230830060821-3293531ccd77
 	github.com/go-redis/redis/extra/redisotel/v8 v8.11.5
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/gorilla/handlers v1.5.1
@@ -40,6 +40,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
+	github.com/devexps/go-pkg/v2 v2.0.0-20230830041653-2d2203e98e28 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
@@ -84,7 +85,7 @@ require (
 	golang.org/x/mod v0.8.0 // indirect
 	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.8.0 // indirect
+	golang.org/x/sys v0.10.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/tools v0.6.1-0.20230222164832-25d2519c8696 // indirect
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect
