@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package common.conf;
+
+import "google/protobuf/duration.proto";
+
+option go_package = "github.com/devexps/go-examples/k8s/api/gen/go/common/conf;conf";
+
+message Client {
+  // HTTP
+  message HTTP {
+    google.protobuf.Duration timeout = 1;
+  }
+
+  // gPRC
+  message GRPC {
+    google.protobuf.Duration timeout = 1;
+  }
+
+  HTTP http = 1;
+  GRPC grpc = 2;
+}

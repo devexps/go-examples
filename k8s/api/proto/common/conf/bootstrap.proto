@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package common.conf;
+
+import "common/conf/server.proto";
+import "common/conf/client.proto";
+import "common/conf/data.proto";
+import "common/conf/auth.proto";
+import "common/conf/trace.proto";
+import "common/conf/logger.proto";
+import "common/conf/registry.proto";
+import "common/conf/config.proto";
+
+option go_package = "github.com/devexps/go-examples/k8s/api/gen/go/common/conf;conf";
+
+message Bootstrap {
+  Server server = 1;
+  Client client = 2;
+  Data data = 3;
+  Auth auth = 4;
+  Tracer trace = 5;
+  Logger logger = 6;
+  Registry registry = 7;
+  RemoteConfig config = 8;
+}

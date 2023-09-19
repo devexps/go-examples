@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: go-micro
+  name: user-srv
+  labels:
+    app: user-srv
+spec:
+  ports:
+    - port: 9090
+      name: user-srv-grpc
+      targetPort: 9090
+  selector:
+    app: user-srv

@@ -1,0 +1,48 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: User backend login authentication interface
+    description: User backend login authentication
+    version: "1.0"
+paths:
+    /admin/v1/login:
+        post:
+            tags:
+                - AuthenticationService
+            description: Login api
+            operationId: AuthenticationService_Login
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/admin_srv.v1.LoginRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/admin_srv.v1.LoginReply'
+components:
+    schemas:
+        admin_srv.v1.LoginReply:
+            type: object
+            properties:
+                id:
+                    type: string
+                userName:
+                    type: string
+                token:
+                    type: string
+        admin_srv.v1.LoginRequest:
+            type: object
+            properties:
+                userName:
+                    type: string
+                password:
+                    type: string
+tags:
+    - name: AuthenticationService

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: go-micro
+  name: token-srv
+  labels:
+    app: token-srv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: token-srv
+  template:
+    metadata:
+      labels:
+        app: token-srv
+        gomicro-service-id: "56991810-0003-4a95-8190-393efa9c1a61"
+        gomicro-service-app: "examples.k8s.token.srv"
+        gomicro-service-version: "v1.0.0"
+      annotations:
+        gomicro-service-protocols: |
+          {"9090": "grpc"}
+        gomicro-service-metadata: |
+          {"region": "sh", "zone": "sh001", "cluster": "pd"}
+    spec:
+      containers:
+        - name: token-srv
+          image: devexps/token-srv:k8s
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9090
+              name: grpc-port
+      serviceAccountName: go-micro-services

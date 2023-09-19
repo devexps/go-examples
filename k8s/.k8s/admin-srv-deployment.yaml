@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: go-micro
+  name: admin-srv
+  labels:
+    app: admin-srv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-srv
+  template:
+    metadata:
+      labels:
+        app: admin-srv
+        gomicro-service-id: "56991810-0001-4a95-8190-393efa9c1a61"
+        gomicro-service-app: "examples.k8s.admin.srv"
+        gomicro-service-version: "v1.0.0"
+      annotations:
+        gomicro-service-protocols: |
+          {"8080": "http", "9090": "grpc"}
+        gomicro-service-metadata: |
+          {"region": "sh", "zone": "sh001", "cluster": "pd"}
+    spec:
+      containers:
+        - name: admin-srv
+          image: devexps/admin-srv:k8s
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http-port
+            - containerPort: 9090
+              name: grpc-port
+      serviceAccountName: go-micro-services

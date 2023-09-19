@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package token_srv.v1;
+
+import "errors/errors.proto";
+
+option go_package = "github.com/devexps/go-examples/k8s/api/gen/go/token-srv/v1;v1";
+option java_multiple_files = true;
+option java_package = "dev.gomicro.api.token_srv.v1";
+
+enum ErrorReason {
+  option (errors.default_code) = 500;
+
+  CREATE_TOKEN_FAILED = 0 [(errors.code) = 101];
+  SAVE_TOKEN_FAILED = 1 [(errors.code) = 102];
+}
