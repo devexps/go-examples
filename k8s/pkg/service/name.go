@@ -1,7 +1,7 @@
 package service
 
 const (
-	AdminService = "examples.k8s.admin.srv"
-	UserService  = "examples.k8s.user.srv"
-	TokenService = "examples.k8s.token.srv"
+	AdminService = "go-micro.admin-srv"
+	UserService  = "go-micro.user-srv"
+	TokenService = "go-micro.token-srv"
 )

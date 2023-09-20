@@ -1,0 +1,11 @@
+config:
+  type: "k8s"
+
+  consul:
+    address: 127.0.0.1:8500
+    scheme: http
+    key: "go-micro/admin-srv/"
+
+  k8s:
+    namespace: "go-micro"
+    label_selector: "app=admin-srv"

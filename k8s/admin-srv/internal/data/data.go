@@ -34,7 +34,7 @@ func NewData(cfg *conf.Bootstrap, logger log.Logger,
 
 // NewDiscovery .
 func NewDiscovery(cfg *conf.Bootstrap) registry.Discovery {
-	return bootstrap.NewK8sRegistry(cfg.Registry)
+	return bootstrap.NewDiscovery(cfg.Registry)
 }
 
 // NewUserServiceClient .

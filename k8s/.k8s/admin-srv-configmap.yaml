@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: go-micro
+  name: admin-srv
+  labels:
+    app: admin-srv
+data:
+  config.yaml: |
+    server:
+      http:
+        addr: 0.0.0.0:8080
+        timeout: 1s
+        headers:
+          - "Content-Type"
+          - "Authorization"
+        methods:
+          - "GET"
+          - "POST"
+          - "PUT"
+          - "DELETE"
+          - "HEAD"
+          - "OPTIONS"
+        origins:
+          - "*"
+      grpc:
+        addr: 0.0.0.0:9090
+        timeout: 1s
+
+    client:
+      grpc:
+        timeout: 1s
+
+    registry:
+      type: "k8s"
+
+    trace:
+      endpoint: 127.0.0.1:6831

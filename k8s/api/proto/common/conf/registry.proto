@@ -15,8 +15,14 @@ message Registry {
   message Etcd {
     repeated string endpoints = 1;
   }
+  // K8s
+  message K8s {
+    string namespace = 1;
+    string masterUrl = 2;
+  }
 
   string type = 1;
   Consul consul = 2;
   Etcd etcd = 3;
+  K8s k8s = 4;
 }

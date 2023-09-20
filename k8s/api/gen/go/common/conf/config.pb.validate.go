@@ -117,6 +117,35 @@ func (m *RemoteConfig) validate(all bool) error {
 		}
 	}
 
+	if all {
+		switch v := interface{}(m.GetK8S()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, RemoteConfigValidationError{
+					field:  "K8S",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, RemoteConfigValidationError{
+					field:  "K8S",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetK8S()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return RemoteConfigValidationError{
+				field:  "K8S",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
 	if len(errors) > 0 {
 		return RemoteConfigMultiError(errors)
 	}
@@ -434,3 +463,111 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = RemoteConfig_EtcdValidationError{}
+
+// Validate checks the field values on RemoteConfig_K8S with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *RemoteConfig_K8S) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on RemoteConfig_K8S with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// RemoteConfig_K8SMultiError, or nil if none found.
+func (m *RemoteConfig_K8S) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *RemoteConfig_K8S) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Namespace
+
+	// no validation rules for MasterUrl
+
+	// no validation rules for LabelSelector
+
+	// no validation rules for FieldSelector
+
+	if len(errors) > 0 {
+		return RemoteConfig_K8SMultiError(errors)
+	}
+
+	return nil
+}
+
+// RemoteConfig_K8SMultiError is an error wrapping multiple validation errors
+// returned by RemoteConfig_K8S.ValidateAll() if the designated constraints
+// aren't met.
+type RemoteConfig_K8SMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m RemoteConfig_K8SMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m RemoteConfig_K8SMultiError) AllErrors() []error { return m }
+
+// RemoteConfig_K8SValidationError is the validation error returned by
+// RemoteConfig_K8S.Validate if the designated constraints aren't met.
+type RemoteConfig_K8SValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RemoteConfig_K8SValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RemoteConfig_K8SValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RemoteConfig_K8SValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RemoteConfig_K8SValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RemoteConfig_K8SValidationError) ErrorName() string { return "RemoteConfig_K8SValidationError" }
+
+// Error satisfies the builtin error interface
+func (e RemoteConfig_K8SValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRemoteConfig_K8S.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RemoteConfig_K8SValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RemoteConfig_K8SValidationError{}

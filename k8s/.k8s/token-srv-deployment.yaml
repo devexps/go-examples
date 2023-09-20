@@ -14,8 +14,8 @@ spec:
     metadata:
       labels:
         app: token-srv
-        gomicro-service-id: "56991810-0003-4a95-8190-393efa9c1a61"
-        gomicro-service-app: "examples.k8s.token.srv"
+        gomicro-service-id: "0002.go-micro.token-srv"
+        gomicro-service-app: "go-micro.token-srv"
         gomicro-service-version: "v1.0.0"
       annotations:
         gomicro-service-protocols: |

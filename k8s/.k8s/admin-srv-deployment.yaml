@@ -14,8 +14,8 @@ spec:
     metadata:
       labels:
         app: admin-srv
-        gomicro-service-id: "56991810-0001-4a95-8190-393efa9c1a61"
-        gomicro-service-app: "examples.k8s.admin.srv"
+        gomicro-service-id: "0001.go-micro.admin-srv"
+        gomicro-service-app: "go-micro.admin-srv"
         gomicro-service-version: "v1.0.0"
       annotations:
         gomicro-service-protocols: |

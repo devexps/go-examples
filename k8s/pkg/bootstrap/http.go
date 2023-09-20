@@ -1,13 +1,13 @@
 package bootstrap
 
 import (
+	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/metadata"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	microHttp "github.com/devexps/go-micro/v2/transport/http"
 	"github.com/gorilla/handlers"
-	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 )
 
 // CreateHttpServer creates a HTTP server
@@ -19,7 +19,6 @@ func CreateHttpServer(cfg *conf.Bootstrap, m ...middleware.Middleware) *microHtt
 			handlers.AllowedOrigins(cfg.Server.Http.Origins),
 		)),
 	}
-
 	var ms []middleware.Middleware
 	ms = append(ms, recovery.Recovery())
 	ms = append(ms, metadata.Server())

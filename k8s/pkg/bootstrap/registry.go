@@ -93,7 +93,7 @@ func NewEtcdRegistry(c *conf.Registry) *etcdMicro.Registry {
 
 // NewK8sRegistry creates a registry discovery client - Kubernetes
 func NewK8sRegistry(c *conf.Registry) *k8sMicro.Registry {
-	clientSet, err := getClientSet()
+	clientSet, _, err := getK8sClientSet(c.K8S.GetMasterUrl())
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,18 +102,19 @@ func NewK8sRegistry(c *conf.Registry) *k8sMicro.Registry {
 	return r
 }
 
-func getClientSet() (*kubernetes.Clientset, error) {
+func getK8sClientSet(masterUrl string) (*kubernetes.Clientset, string, error) {
+	kubeConfig := ""
 	restConfig, err := rest.InClusterConfig()
 	if err != nil {
-		kubeConfig := filepath.Join(homedir.HomeDir(), ".kube", "config")
-		restConfig, err = clientcmd.BuildConfigFromFlags("", kubeConfig)
+		kubeConfig = filepath.Join(homedir.HomeDir(), ".kube", "config")
+		restConfig, err = clientcmd.BuildConfigFromFlags(masterUrl, kubeConfig)
 		if err != nil {
-			return nil, err
+			return nil, kubeConfig, err
 		}
 	}
 	clientSet, err := kubernetes.NewForConfig(restConfig)
 	if err != nil {
-		return nil, err
+		return nil, kubeConfig, err
 	}
-	return clientSet, nil
+	return clientSet, kubeConfig, nil
 }

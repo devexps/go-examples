@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: go-micro
+  name: token-srv
+  labels:
+    app: token-srv
+data:
+  config.yaml: |
+    server:
+      grpc:
+        addr: 0.0.0.0:9090
+        timeout: 1s
+
+    registry:
+      type: "k8s"
+
+    trace:
+      endpoint: 127.0.0.1:6831

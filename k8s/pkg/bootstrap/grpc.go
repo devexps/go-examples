@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"context"
+	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/metadata"
@@ -12,7 +13,6 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"time"
-	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 )
 
 const defaultTimeout = 5 * time.Second
@@ -23,7 +23,6 @@ func CreateGrpcClient(ctx context.Context, r registry.Discovery, serviceName str
 	if timeoutDuration != nil {
 		timeout = timeoutDuration.AsDuration()
 	}
-
 	endpoint := "discovery:///" + serviceName
 
 	conn, err := microGrpc.DialInsecure(

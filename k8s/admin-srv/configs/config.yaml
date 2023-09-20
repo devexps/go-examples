@@ -23,7 +23,11 @@ client:
     timeout: 1s
 
 registry:
-  type: "k8s"
+  type: "consul"
+  consul:
+    address: 127.0.0.1:8500
+    scheme: http
+    health_check: false
 
 trace:
   endpoint: 127.0.0.1:6831

@@ -7,19 +7,28 @@ import "google/protobuf/duration.proto";
 option go_package = "github.com/devexps/go-examples/k8s/api/gen/go/common/conf;conf";
 
 message RemoteConfig {
+  // Consul
   message Consul {
     string scheme = 1;
     string address = 2;
     string key = 3;
   }
-
+  // Etcd
   message Etcd {
     repeated string endpoints = 1;
     google.protobuf.Duration timeout = 2;
     string key = 3;
   }
+  // K8s
+  message K8s {
+    string namespace = 1;
+    string master_url = 2;
+    string label_selector = 3;
+    string field_selector = 4;
+  }
 
   string type = 1;
   Consul consul = 2;
   Etcd etcd = 3;
+  K8s k8s = 4;
 }

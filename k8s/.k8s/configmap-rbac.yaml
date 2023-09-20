@@ -23,9 +23,3 @@ subjects:
   - kind: ServiceAccount
     namespace: go-micro
     name: go-micro-services
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  namespace: go-micro
-  name: go-micro-services
