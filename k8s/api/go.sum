@@ -12,6 +12,8 @@ github.com/cncf/udpa/go v0.0.0-20201120205902-5459f2c99403/go.mod h1:WmhPx2Nbnht
 github.com/cncf/xds/go v0.0.0-20210312221358-fbca930ec8ed/go.mod h1:eXthEFrGJvWHgFFCl3hGmgk+/aYT6PnTQLykKQRLhEs=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/devexps/go-micro/v2 v2.0.0-20230918080927-6e0139493141 h1:tLnUp6rt3AYZ1NoZY2kt1J/QJJ8OF7lUPxNCBWEbHzA=
+github.com/devexps/go-micro/v2 v2.0.0-20230918080927-6e0139493141/go.mod h1:mBgQlRZpc6+tL8LfVP+pDytqSoFbcSScZlKkRmn3O1o=
 github.com/devexps/go-pkg/v2 v2.0.0-20230830041653-2d2203e98e28 h1:yAnje2CO0wx5P0dgLd04bxif6ibINbCyUlKQIMXAjJ4=
 github.com/devexps/go-pkg/v2 v2.0.0-20230830041653-2d2203e98e28/go.mod h1:y9+lQfT+hTqxx4aOOp2SIpz7/Miu49WM6C78XlbIirQ=
 github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815/go.mod h1:WwZ+bS3ebgob9U8Nd0kOddGdZWjyMGR8Wziv+TBNwSE=

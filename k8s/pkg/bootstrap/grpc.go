@@ -2,7 +2,13 @@ package bootstrap
 
 import (
 	"context"
+	"time"
+
+	"google.golang.org/grpc"
+	"google.golang.org/protobuf/types/known/durationpb"
+
 	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
+
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/metadata"
@@ -10,9 +16,6 @@ import (
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	"github.com/devexps/go-micro/v2/registry"
 	microGrpc "github.com/devexps/go-micro/v2/transport/grpc"
-	"google.golang.org/grpc"
-	"google.golang.org/protobuf/types/known/durationpb"
-	"time"
 )
 
 const defaultTimeout = 5 * time.Second

@@ -2,12 +2,15 @@ package data
 
 import (
 	"context"
+	"time"
+
+	jwtV4 "github.com/golang-jwt/jwt/v4"
+
 	"github.com/devexps/go-examples/k8s/api/gen/go/common/authn"
 	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 	v1 "github.com/devexps/go-examples/k8s/api/gen/go/token-srv/v1"
+
 	"github.com/devexps/go-micro/v2/log"
-	jwtV4 "github.com/golang-jwt/jwt/v4"
-	"time"
 )
 
 const (

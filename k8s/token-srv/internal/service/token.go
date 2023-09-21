@@ -2,8 +2,10 @@ package service
 
 import (
 	"context"
+
 	v1 "github.com/devexps/go-examples/k8s/api/gen/go/token-srv/v1"
 	"github.com/devexps/go-examples/k8s/token-srv/internal/biz"
+	
 	"github.com/devexps/go-micro/v2/log"
 )
 

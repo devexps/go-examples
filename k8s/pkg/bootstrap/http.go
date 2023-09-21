@@ -1,13 +1,15 @@
 package bootstrap
 
 import (
+	"github.com/gorilla/handlers"
+
 	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
+
 	"github.com/devexps/go-micro/v2/middleware"
 	"github.com/devexps/go-micro/v2/middleware/metadata"
 	"github.com/devexps/go-micro/v2/middleware/recovery"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
 	microHttp "github.com/devexps/go-micro/v2/transport/http"
-	"github.com/gorilla/handlers"
 )
 
 // CreateHttpServer creates a HTTP server

@@ -2,11 +2,13 @@ package data
 
 import (
 	"context"
+
 	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 	tokenV1 "github.com/devexps/go-examples/k8s/api/gen/go/token-srv/v1"
 	userV1 "github.com/devexps/go-examples/k8s/api/gen/go/user-srv/v1"
 	"github.com/devexps/go-examples/k8s/pkg/bootstrap"
 	"github.com/devexps/go-examples/k8s/pkg/service"
+
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/registry"
 )

@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
+
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/registry"
 )
@@ -17,7 +18,6 @@ func Bootstrap(serviceInfo *ServiceInfo) (*conf.Bootstrap, log.Logger, registry.
 	if cfg == nil {
 		panic("load config failed")
 	}
-
 	// init logger
 	ll := NewLoggerProvider(cfg.Logger, serviceInfo)
 
@@ -29,6 +29,5 @@ func Bootstrap(serviceInfo *ServiceInfo) (*conf.Bootstrap, log.Logger, registry.
 	if err != nil {
 		panic(err)
 	}
-
 	return cfg, ll, reg
 }

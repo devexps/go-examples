@@ -30,6 +30,5 @@ func (f *CommandFlags) Init() {
 	if f.Daemon {
 		BeDaemon("-d")
 	}
-
 	flag.Parse()
 }

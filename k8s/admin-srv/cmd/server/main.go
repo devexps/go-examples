@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/devexps/go-examples/k8s/pkg/bootstrap"
 	"github.com/devexps/go-examples/k8s/pkg/service"
+
 	"github.com/devexps/go-micro/v2"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/registry"

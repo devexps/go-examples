@@ -2,8 +2,6 @@ module github.com/devexps/go-examples/k8s/api
 
 go 1.18
 
-replace github.com/devexps/go-micro/v2 => ../../../go-micro
-
 require (
 	github.com/devexps/go-micro/v2 v2.0.0-20230918080927-6e0139493141
 	github.com/envoyproxy/protoc-gen-validate v1.0.2

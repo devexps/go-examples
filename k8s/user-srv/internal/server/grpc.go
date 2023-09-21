@@ -5,6 +5,7 @@ import (
 	v1 "github.com/devexps/go-examples/k8s/api/gen/go/user-srv/v1"
 	"github.com/devexps/go-examples/k8s/pkg/bootstrap"
 	"github.com/devexps/go-examples/k8s/user-srv/internal/service"
+
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware/logging"
 	"github.com/devexps/go-micro/v2/transport/grpc"

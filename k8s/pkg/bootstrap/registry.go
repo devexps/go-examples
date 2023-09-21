@@ -1,14 +1,17 @@
 package bootstrap
 
 import (
-	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
-	"github.com/devexps/go-micro/v2/log"
-	"github.com/devexps/go-micro/v2/registry"
+	"path/filepath"
+
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
-	"path/filepath"
+
+	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
+
+	"github.com/devexps/go-micro/v2/log"
+	"github.com/devexps/go-micro/v2/registry"
 
 	// consul
 	consulMicro "github.com/devexps/go-micro/registry/consul/v2"
@@ -51,7 +54,6 @@ func NewDiscovery(cfg *conf.Registry) registry.Discovery {
 	if cfg == nil {
 		return nil
 	}
-
 	switch RegistryType(cfg.Type) {
 	case RegistryTypeConsul:
 		return NewConsulRegistry(cfg)
@@ -82,7 +84,6 @@ func NewEtcdRegistry(c *conf.Registry) *etcdMicro.Registry {
 	cfg := etcdClient.Config{
 		Endpoints: c.Etcd.Endpoints,
 	}
-
 	var err error
 	var cli *etcdClient.Client
 	if cli, err = etcdClient.New(cfg); err != nil {

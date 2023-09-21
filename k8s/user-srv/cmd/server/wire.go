@@ -11,9 +11,11 @@ import (
 	"github.com/devexps/go-examples/k8s/user-srv/internal/data"
 	"github.com/devexps/go-examples/k8s/user-srv/internal/server"
 	"github.com/devexps/go-examples/k8s/user-srv/internal/service"
+
 	"github.com/devexps/go-micro/v2"
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/registry"
+	
 	"github.com/google/wire"
 )
 

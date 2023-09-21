@@ -8,5 +8,5 @@ message Tracer {
   string batcher = 1; // jaeger or zipkin
   string endpoint = 2; // host port
   double sampler = 3; // sampling rate, default: 1.0
-  string env = 4; // operating environment：dev,debug, product
+  string env = 4; // operating environment：dev, debug, product
 }

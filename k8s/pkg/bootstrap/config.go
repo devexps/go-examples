@@ -142,7 +142,6 @@ func LoadBootstrapConfig(configPath string) *conf.Bootstrap {
 	if err := cfg.Scan(&bc); err != nil {
 		panic(err)
 	}
-
 	if bc.Server == nil {
 		bc.Server = &conf.Server{}
 		_ = cfg.Scan(&bc.Server)

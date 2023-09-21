@@ -1,10 +1,12 @@
 package bootstrap
 
 import (
+	"os"
+
+	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
+
 	"github.com/devexps/go-micro/v2/log"
 	"github.com/devexps/go-micro/v2/middleware/tracing"
-	"os"
-	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 )
 
 type LoggerType string
@@ -34,7 +36,6 @@ func NewLogger(cfg *conf.Logger) log.Logger {
 	if cfg == nil {
 		return NewStdLogger()
 	}
-
 	switch LoggerType(cfg.Type) {
 	default:
 		fallthrough

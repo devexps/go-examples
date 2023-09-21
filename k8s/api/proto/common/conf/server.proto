@@ -16,7 +16,6 @@ message Server {
     repeated string methods = 5;
     repeated string origins = 6;
   }
-
   // gPRC
   message GRPC {
     string network = 1;

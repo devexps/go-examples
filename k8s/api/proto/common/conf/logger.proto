@@ -5,6 +5,7 @@ package common.conf;
 option go_package = "github.com/devexps/go-examples/k8s/api/gen/go/common/conf;conf";
 
 message Logger {
+  // Zap
   message Zap {
     string filename = 1;
     string level = 2;
@@ -12,7 +13,7 @@ message Logger {
     int32 max_age = 4;
     int32 max_backups = 5;
   }
-
+  // Logrus
   message Logrus {
     string level = 1; // log level
     string formatter = 2; // output format：text, json.

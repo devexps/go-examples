@@ -2,7 +2,9 @@ package data
 
 import (
 	"context"
+
 	v1 "github.com/devexps/go-examples/k8s/api/gen/go/user-srv/v1"
+	
 	"github.com/devexps/go-micro/v2/log"
 )
 

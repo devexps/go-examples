@@ -7,12 +7,13 @@ import "google/protobuf/duration.proto";
 option go_package = "github.com/devexps/go-examples/k8s/api/gen/go/common/conf;conf";
 
 message Data {
+  // Database
   message Database {
     string driver = 1;
     string source = 2;
     bool migrate = 3;
   }
-
+  // Redis
   message Redis {
     string addr = 1;
     string password = 2;
@@ -21,7 +22,7 @@ message Data {
     google.protobuf.Duration read_timeout = 5;
     google.protobuf.Duration write_timeout = 6;
   }
-
+  // Etcd
   message Etcd {
     repeated string endpoints = 1;
     google.protobuf.Duration dial_timeout = 2;

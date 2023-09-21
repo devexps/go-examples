@@ -2,7 +2,9 @@ package service
 
 import (
 	"context"
+
 	v1 "github.com/devexps/go-examples/k8s/api/gen/go/user-srv/v1"
+	
 	"github.com/devexps/go-examples/k8s/user-srv/internal/biz"
 )
 

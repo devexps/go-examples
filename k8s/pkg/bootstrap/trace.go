@@ -2,14 +2,16 @@ package bootstrap
 
 import (
 	"errors"
+	"net"
+	"strings"
+
+	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
+
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/sdk/resource"
 	traceSdk "go.opentelemetry.io/otel/sdk/trace"
 	semConv "go.opentelemetry.io/otel/semconv/v1.4.0"
-	"net"
-	"strings"
-	"github.com/devexps/go-examples/k8s/api/gen/go/common/conf"
 
 	"go.opentelemetry.io/otel/exporters/jaeger"
 	"go.opentelemetry.io/otel/exporters/zipkin"
@@ -20,15 +22,12 @@ func NewTracerProvider(cfg *conf.Tracer, serviceInfo *ServiceInfo) error {
 	if cfg == nil {
 		return errors.New("tracer config is nil")
 	}
-
 	if cfg.Sampler == 0 {
 		cfg.Sampler = 1.0
 	}
-
 	if cfg.Env == "" {
 		cfg.Env = "dev"
 	}
-
 	opts := []traceSdk.TracerProviderOption{
 		traceSdk.WithSampler(traceSdk.ParentBased(traceSdk.TraceIDRatioBased(cfg.Sampler))),
 		traceSdk.WithResource(resource.NewSchemaless(
@@ -38,23 +37,18 @@ func NewTracerProvider(cfg *conf.Tracer, serviceInfo *ServiceInfo) error {
 			attribute.String("env", cfg.Env),
 		)),
 	}
-
 	if len(cfg.Endpoint) > 0 {
 		exp, err := NewTracerExporter(cfg.Batcher, cfg.Endpoint)
 		if err != nil {
 			panic(err)
 		}
-
 		opts = append(opts, traceSdk.WithBatcher(exp))
 	}
-
 	tp := traceSdk.NewTracerProvider(opts...)
 	if tp == nil {
 		return errors.New("create tracer provider failed")
 	}
-
 	otel.SetTracerProvider(tp)
-
 	return nil
 }
 
@@ -63,7 +57,6 @@ func NewTracerExporter(exporterName, endpoint string) (traceSdk.SpanExporter, er
 	if exporterName == "" {
 		exporterName = "jaeger"
 	}
-
 	switch exporterName {
 	case "jaeger":
 		return NewJaegerExporter(endpoint)
