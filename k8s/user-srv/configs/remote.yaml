@@ -1,8 +1,8 @@
 config:
-  type: "k8s"
+  type: "consul"
 
   consul:
-    address: 127.0.0.1:8500
+    address: consul:8500
     scheme: http
     key: "go-micro/user-srv/"
 

@@ -83,6 +83,7 @@ func (x *Logger) GetLogrus() *Logger_Logrus {
 	return nil
 }
 
+// Zap
 type Logger_Zap struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -162,6 +163,7 @@ func (x *Logger_Zap) GetMaxBackups() int32 {
 	return 0
 }
 
+// Logrus
 type Logger_Logrus struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

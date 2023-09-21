@@ -1,14 +1,14 @@
 server:
   grpc:
-    addr: 0.0.0.0:9090
+    addr: 0.0.0.0:9091
     timeout: 1s
 
 registry:
   type: "consul"
   consul:
-    address: 127.0.0.1:8500
+    address: consul:8500
     scheme: http
     health_check: false
 
 trace:
-  endpoint: 127.0.0.1:6831
+  endpoint: jaeger:6831

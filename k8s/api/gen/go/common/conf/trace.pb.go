@@ -28,7 +28,7 @@ type Tracer struct {
 	Batcher  string  `protobuf:"bytes,1,opt,name=batcher,proto3" json:"batcher,omitempty"`   // jaeger or zipkin
 	Endpoint string  `protobuf:"bytes,2,opt,name=endpoint,proto3" json:"endpoint,omitempty"` // host port
 	Sampler  float64 `protobuf:"fixed64,3,opt,name=sampler,proto3" json:"sampler,omitempty"` // sampling rate, default: 1.0
-	Env      string  `protobuf:"bytes,4,opt,name=env,proto3" json:"env,omitempty"`           // operating environment：dev,debug, product
+	Env      string  `protobuf:"bytes,4,opt,name=env,proto3" json:"env,omitempty"`           // operating environment：dev, debug, product
 }
 
 func (x *Tracer) Reset() {

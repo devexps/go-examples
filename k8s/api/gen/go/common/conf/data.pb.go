@@ -84,6 +84,7 @@ func (x *Data) GetEtcd() *Data_Etcd {
 	return nil
 }
 
+// Database
 type Data_Database struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -147,6 +148,7 @@ func (x *Data_Database) GetMigrate() bool {
 	return false
 }
 
+// Redis
 type Data_Redis struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -234,6 +236,7 @@ func (x *Data_Redis) GetWriteTimeout() *durationpb.Duration {
 	return nil
 }
 
+// Etcd
 type Data_Etcd struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

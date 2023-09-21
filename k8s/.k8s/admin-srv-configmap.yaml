@@ -33,6 +33,3 @@ data:
 
     registry:
       type: "k8s"
-
-    trace:
-      endpoint: 127.0.0.1:6831
