@@ -1,5 +1,5 @@
 config:
-  type: "consul"
+  type: "k8s"
 
   consul:
     address: consul:8500
