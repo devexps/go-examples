@@ -171,7 +171,7 @@ And then we'll see the result like this:
 
 ## Docker Compose
 
-We can modify the `type` value inside the `remote.yaml` in each of the services, then re-dockerize them.
+We can modify the `type` value inside the `remote.yaml` file in each of the services, then re-dockerize them.
 
 ```yaml
 config:
