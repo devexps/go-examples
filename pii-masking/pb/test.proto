@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package test_srv.v1;
+
+option go_package = "github.com/devexps/go-examples/pii-masking/test-srv/v1;v1";
+
+message ContactInfo {
+  // @gotags: mask:"name"
+  string name = 1;
+
+  // title
+  string title = 2;
+
+  // @gotags: mask:"email"
+  string email = 3;
+
+  // @gotags: mask:"mobile"
+  string mobile = 4;
+
+  // @gotags: mask:"telephone"
+  string telephone = 5;
+}
+
+message PresenterInfo {
+  // @gotags: mask:"id"
+  string id = 1;
+
+  // @gotags: mask:"name"
+  string name = 2;
+
+  // title
+  string title = 3;
+
+  // @gotags: mask:"address"
+  string address = 4;
+}
+
+message IntegrationInfo {
+  // name
+  string name = 1;
+
+  // @gotags: mask:"URL"
+  string hook_url = 2;
+
+  // @gotags: mask:"secret"
+  string token = 3;
+}
+
+message LoginInfo {
+  // username
+  string username = 1;
+
+  // @gotags: mask:"password"
+  string password = 2;
+}
+
+message UserInfo {
+  // contact_info
+  ContactInfo contact_info = 1;
+
+  // presenter_info
+  PresenterInfo presenter_info = 2;
+
+  // integration_info list
+  repeated IntegrationInfo integration_infos = 3;
+
+  // login_info
+  LoginInfo login_info = 4;
+
+  // @gotags: mask:"custom1"
+  string business_license_number = 5;
+
+  // @gotags: mask:"custom2"
+  string business_license_no = 6;
+}
