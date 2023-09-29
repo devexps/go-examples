@@ -39,7 +39,7 @@ message IntegrationInfo {
   // name
   string name = 1;
 
-  // @gotags: mask:"URL"
+  // @gotags: mask:"url"
   string hook_url = 2;
 
   // @gotags: mask:"secret"

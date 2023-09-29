@@ -186,8 +186,8 @@ type IntegrationInfo struct {
 
 	// name
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// @gotags: mask:"URL"
-	HookUrl string `protobuf:"bytes,2,opt,name=hook_url,json=hookUrl,proto3" json:"hook_url,omitempty" mask:"URL"`
+	// @gotags: mask:"url"
+	HookUrl string `protobuf:"bytes,2,opt,name=hook_url,json=hookUrl,proto3" json:"hook_url,omitempty" mask:"url"`
 	// @gotags: mask:"secret"
 	Token string `protobuf:"bytes,3,opt,name=token,proto3" json:"token,omitempty" mask:"secret"`
 }
