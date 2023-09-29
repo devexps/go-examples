@@ -56,7 +56,7 @@ message IntegrationInfo {
   // name
   string name = 1;
 
-  // @gotags: mask:"URL"
+  // @gotags: mask:"url"
   string hook_url = 2;
 
   // @gotags: mask:"secret"
@@ -229,4 +229,307 @@ The good result is gonna be:
   "business_license_number": "---@@---",
   "business_license_no": "[filtered]"
 }
+```
+
+## Filter Sensitive Data
+
+### By specified field
+
+#### Default
+
+```go
+type myRecord struct {
+    ID    string
+    Phone string
+}
+record := myRecord{
+    ID:    "userId",
+    Phone: "090-1234-5678",
+}
+
+maskTool := mask.New(mask.FieldFilter("Phone"))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","Phone":"[filtered]"}
+```
+
+#### Custom
+
+```go
+type myRecord struct {
+    ID         string
+    Phone      string
+    Url        string
+    Email      string
+    Name       string
+    Address    string
+    CreditCard string
+}
+record := myRecord{
+    ID:         "userId",
+    Phone:      "090-1234-5678",
+    Url:        "http://admin:mysecretpassword@localhost:1234/uri",
+    Email:      "dummy@dummy.com",
+    Name:       "John Doe",
+    Address:    "1 AB Road, Paradise",
+    CreditCard: "4444-4444-4444-4444",
+}
+
+maskTool := mask.New(
+    mask.FieldFilter("Phone", masker.MMobile),
+    mask.FieldFilter("Email", masker.MEmail),
+    mask.FieldFilter("Url", masker.MURL),
+    mask.FieldFilter("Name", masker.MName),
+    mask.FieldFilter("ID", masker.MID),
+    mask.FieldFilter("Address", masker.MAddress),
+    mask.FieldFilter("CreditCard", masker.MCreditCard),
+)
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId****","Phone":"090-***4-5678","Url":"http://admin:xxxxx@localhost:1234/uri","Email":"dum****@dummy.com","Name":"J**n D**e","Address":"1 AB R******","CreditCard":"4444-4******44-4444"}
+```
+
+### By specified field-prefix
+
+#### Default
+
+```go
+type myRecord struct {
+    ID          string
+    SecurePhone string
+}
+record := myRecord{
+    ID:          "userId",
+    SecurePhone: "090-1234-5678",
+}
+
+maskTool := mask.New(mask.FieldPrefixFilter("Secure"))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","SecurePhone":"[filtered]"}
+```
+
+#### Custom
+
+```go
+type myRecord struct {
+    ID          string
+    SecurePhone string
+}
+record := myRecord{
+    ID:          "userId",
+    SecurePhone: "090-1234-5678",
+}
+
+maskTool := mask.New(mask.FieldPrefixFilter("Secure", masker.MMobile))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","SecurePhone":"090-***4-5678"}
+```
+
+### By specified value
+
+#### Default
+
+```go
+const issuedToken = "abcd123456"
+maskTool := mask.New(mask.ValueFilter(issuedToken))
+
+record := "Authorization: Bearer " + issuedToken
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+"Authorization: Bearer [filtered]"
+```
+
+#### Custom
+
+```go
+const issuedToken = "abcd123456"
+maskTool := mask.New(mask.ValueFilter(issuedToken, masker.MPassword))
+
+record := "Authorization: Bearer " + issuedToken
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+"Authorization: Bearer ************"
+```
+
+### By custom type
+
+#### Default
+
+```go
+type password string
+type apps []int32
+type myRecord struct {
+    ID       string
+    Password password
+    Apps     apps
+}
+record := myRecord{
+    ID:       "userId",
+    Password: "abcd1234",
+    Apps:     apps{123, 456},
+}
+maskTool := mask.New(mask.TypeFilter(password("")), mask.TypeFilter(apps{}))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","Password":"[filtered]","Apps":null}
+```
+
+#### Custom
+
+```go
+type password string
+type apps []int32
+type myRecord struct {
+    ID       string
+    Password password
+    Apps     apps
+}
+record := myRecord{
+    ID:       "userId",
+    Password: "abcd1234",
+    Apps:     apps{123, 456},
+}
+maskTool := mask.New(mask.TypeFilter(password(""), masker.MPassword), mask.TypeFilter(apps{}))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","Password":"************","Apps":null}
+```
+
+### By struct tag
+
+#### Default
+
+```go
+type myRecord struct {
+    ID    string
+    EMail string `mask:"secret"`
+}
+record := myRecord{
+    ID:    "userId",
+    EMail: "dummy@dummy.com",
+}
+maskTool := mask.New(mask.TagFilter())
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","EMail":"[filtered]"}
+```
+
+#### Custom
+
+```go
+type myRecord struct {
+    ID    string
+    EMail string `mask:"secret"`
+    Phone string `mask:"mobile"`
+}
+record := myRecord{
+    ID:    "userId",
+    EMail: "dummy@dummy.com",
+    Phone: "9191919191",
+}
+maskTool := mask.New(mask.TagFilter(masker.MEmail, masker.MMobile))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","EMail":"dummy@dummy.com","Phone":"9191***191"}
+```
+
+### By regex filter
+
+#### Default
+
+```go
+customRegex := "^https:\\/\\/(dummy-backend.)[0-9a-z]*.com\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$"
+type myRecord struct {
+    ID   string
+    Link string
+}
+record := myRecord{
+    ID:   "userId",
+    Link: "https://dummy-backend.dummy.com/v2/random",
+}
+maskTool := mask.New(mask.RegexFilter(customRegex))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","Link":"[filtered]"}
+```
+
+#### Custom
+
+```go
+customRegex := "^https:\\/\\/(dummy-backend.)[0-9a-z]*.com\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$"
+type myRecord struct {
+    ID   string
+    Link string
+}
+record := myRecord{
+    ID:   "userId",
+    Link: "https://dummy-backend.dummy.com/v2/random",
+}
+maskTool := mask.New(mask.RegexFilter(customRegex, masker.MPassword))
+filteredData := maskTool.Apply(record)
+
+fmt.Println(filteredData)
+```
+
+```json
+{"ID":"userId","Link":"************"}
+```
+
+## Customise Masker
+
+```go
+mask.SetMasker(masker.NewMasker(
+    masker.WithMarkTypes("custom1", "custom2", "custom3"),
+    masker.WithStringFunc(func(t masker.MType, s string) (bool, string) {
+        return false, ""
+    }),
+    masker.WithMaskingCharacter(string(masker.PCross)),
+    masker.WithFilteredLabel("[removed]"),
+))
 ```
