@@ -1,5 +1,7 @@
 # PII Masking example
 
+Protect sensitive customer information by limiting access and visibility.
+
 ## Install
 
 - [protobuf version 3](https://github.com/google/protobuf)
