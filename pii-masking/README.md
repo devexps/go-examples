@@ -7,7 +7,7 @@
 - go support to inject custom tags to generated protobuf
   files: `go install github.com/favadi/protoc-go-inject-tag@latest`
 - go lib to support masking PII sensitive data:
-  [https://github.com/devexps/go-pkg/mask](https://github.com/devexps/go-pkg/tree/main/mask)
+  [https://github.com/devexps/go-utils/mask](https://github.com/devexps/go-utils/tree/main/mask)
 
 ## Example
 
@@ -134,8 +134,8 @@ import (
 
 	v1 "github.com/devexps/go-examples/pii-masking/pb"
 
-	"github.com/devexps/go-pkg/v2/mask"
-	"github.com/devexps/go-pkg/v2/mask/masker"
+	"github.com/devexps/go-utils/mask"
+	"github.com/devexps/go-utils/mask/masker"
 )
 
 func main() {

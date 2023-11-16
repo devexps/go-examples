@@ -5,8 +5,8 @@ import (
 
 	v1 "github.com/devexps/go-examples/pii-masking/pb"
 
-	"github.com/devexps/go-pkg/v2/mask"
-	"github.com/devexps/go-pkg/v2/mask/masker"
+	"github.com/devexps/go-utils/mask"
+	"github.com/devexps/go-utils/mask/masker"
 )
 
 func main() {
